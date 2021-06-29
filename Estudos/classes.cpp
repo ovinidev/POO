@@ -33,6 +33,5 @@ int main() {
   cout << time1 -> estado << endl;
   cout << time1 -> titulos << endl;
 
-
   return 0;
 }
