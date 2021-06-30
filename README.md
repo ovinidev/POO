@@ -11,7 +11,6 @@
 
 <img src="https://www.alura.com.br/artigos/assets/formacao-linguagem-c-plus-plus/img-01.png" alt="imagem" width="55"> 
 
-<br>
 
 ### Compilando arquivos:
 ```
