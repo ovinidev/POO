@@ -3,11 +3,15 @@
 
 using namespace std;
 
-class Employee{
-  private:
-    string Name;
-    string Company;
-    int Age;
+class AbstractEmployee{
+  virtual void AskForPromotion() = 0;
+
+};
+
+class Employee:AbstractEmployee{
+  string Name;
+  string Company;
+  int Age;
 
   public:
     void setName(string name){ //setter
@@ -35,7 +39,15 @@ class Employee{
     void IntroduceYourself();
 
     Employee(string name, string company, int age);
+
+    void AskForPromotion(){
+      if(Age > 30)
+        cout << Name << " Got promoted!" << endl;
+      else
+        cout << Name << " Not promoted!" << endl;
+    };
 };
+
 
 void Employee::IntroduceYourself(){
   cout << "Name:    " << Name << endl;
@@ -53,14 +65,7 @@ Employee::Employee(string name, string company, int age){
 
 int main(){
 
-  Employee employee1 = Employee("Name", "Company", 16);
+  Employee employee1 = Employee("Vini", "Amazon", 16);
   
-  employee1.setAge(12);
-  employee1.setName("Vina");
-  employee1.getAge();
-  employee1.getName();
-  employee1.IntroduceYourself();
-
-  cout << employee1.getName() << " have " << employee1.getAge() << " years old " << endl;
-
+  employee1.AskForPromotion();
 }
