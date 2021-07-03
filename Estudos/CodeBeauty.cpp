@@ -55,12 +55,12 @@ class Developer:public Employee{
     string Languages;
 
     Developer(string name, string company, int age, string languages)
-    :Employee( name,  company, age){
+    :Employee(name, company, age){
       Languages = languages;
     }
     
     void FixBug(){
-      cout << Name << " fixed bug using " << Languages << endl; 
+      cout << getName() << " fixed bug using " << Languages << endl; 
     }
 };
 
