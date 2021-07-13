@@ -1,7 +1,8 @@
 #include <iostream>
-#include <string>
 
-using namespace std;
+using std::cout;
+using std::endl;
+using std::string;
 
 class AbstractEmployee{
   virtual void AskForPromotion() = 0;
@@ -134,8 +135,8 @@ int main(){
 
   e1 -> setAge(30);
   e1 -> getAge();
-  e1 -> setName("oi");
-  e1 -> getName();
+  eng1.setName("oi");
+  eng1.getName();
 
   eng1.setName("Vini");
   eng1.getName();
