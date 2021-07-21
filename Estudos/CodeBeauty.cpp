@@ -4,12 +4,12 @@ using std::cout;
 using std::endl;
 using std::string;
 
-class AbstractEmployee{
+class AbstractEmployee {
   virtual void AskForPromotion() = 0;
 
 };
 
-class Employee:AbstractEmployee{
+class Employee:AbstractEmployee {
   string Company;
   int Age;
 
@@ -17,21 +17,21 @@ class Employee:AbstractEmployee{
   string Name;
 
   public:
-    void setName(string name){ //setter
+    void setName(string name) { //setter
       Name = name;
     };
     string getName(){ //getter
       return Name;
     };
 
-    void setCompany(string company){
+    void setCompany(string company) {
       Company = company;
     };
-    string getCompany(){
+    string getCompany() {
       return Company;
     };
 
-    void setAge(int age){
+    void setAge(int age) {
       if(age >= 18)
         Age = age;
     };
@@ -43,7 +43,7 @@ class Employee:AbstractEmployee{
 
     Employee(string name, string company, int age); // Constructor
 
-    void AskForPromotion(){
+    void AskForPromotion() {
       if(Age >= 30)
         cout << getName() << " Got promoted!" << endl;
       else
@@ -55,19 +55,19 @@ class Employee:AbstractEmployee{
     }
 };
 
-class Developer:public Employee{
+class Developer:public Employee {
   public:
     string Languages;
 
-    void setLanguage(string language){
+    void setLanguage(string language) {
       Languages = language;
     };
-    string getLanguage(){
+    string getLanguage() {
       return Languages;
     };
 
     Developer(string name, string company, int age, string languages)
-    :Employee(name, company, age){
+    :Employee(name, company, age) {
       Languages = languages;
     };
     
@@ -80,34 +80,34 @@ class Developer:public Employee{
     }
 };
 
-void Employee::IntroduceYourself(){
+void Employee::IntroduceYourself() {
   cout << "Name:    " << Name << endl;
   cout << "Company: " << Company << endl;
   cout << "Age:     " << Age << endl;
   cout << " " << endl;
 }
 
-Employee::Employee(string name, string company, int age){
+Employee::Employee(string name, string company, int age) {
   Name = name;
   Company = company;
   Age = age;
 };
 
-class Engineer:public Employee{
+class Engineer:public Employee {
   protected:
     int Salary;
 
   public:
-    void RepairEquipment(){
+    void RepairEquipment() {
       cout << getName() << " Concerted" << endl;
     
     };
-    int getSalary(){
+    int getSalary() {
       return Salary;
     };
 
     Engineer(string name, string company, int age, int salary)
-    :Employee(name, company, age){
+    :Employee(name, company, age) {
       Salary = salary;
     };
 
@@ -129,6 +129,8 @@ int main(){
 
   Employee *e1 = &dev1;
   Employee *e2 = &eng1;
+
+  dev1.FixBug();
 
   e1 -> Work();
   e2 -> Work();

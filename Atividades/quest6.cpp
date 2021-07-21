@@ -1,35 +1,18 @@
 #include <iostream>
-#include <string>
+#include <cctype>
 
-using std::cin;
-using std::cout;
-using std::endl;
-using std::string;
+std::string hasUppercase(std::string name)
+{
+  for (int i = 0; static_cast<int>(name.size()); i++)
+  {
+    if (isupper(name[i]))
+      return "Tem letra maiúscula";
+  };
+  return "Nao tem letra maiúscula";
+};
 
-int main() {
-  string user, newUser;
-
-  getline(cin, user);
-
-  for(int i = 0; i <= static_cast<int>(user.size()); i++) {
-    if(user[i] != ' ' 
-      and user[i] != '!' 
-      and user[i] != '?' 
-      and user[i] != '.' 
-      and user[i] != ',' 
-      and user[i] != ':' 
-      and user[i] != ';' 
-      and user[i] != '.'  
-      and user[i] != '-' 
-      and user[i] != '(' 
-      and user[i] != ')' 
-      and user[i] != '"') {
-      newUser += user[i];
-    }
-  }
-  
-  cout << newUser << endl;
-
-
+int main()
+{
+  std::cout << hasUppercase("Estamos em Quarentena") << std::endl;
   return 0;
 }
