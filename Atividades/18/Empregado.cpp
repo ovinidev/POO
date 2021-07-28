@@ -65,7 +65,7 @@ int Empregado::aumentarSalario() {
   aumento = salarioMensal * 0.10;
   salarioMensal += aumento;
 
-  cout << "Parabens! voce ganhou um aumento de 10%" << endl;
+  cout << "Parabens "<< getNome() << "! voce ganhou um aumento de 10%." << endl;
   cout << "Salario com aumento: " << "R$" << salarioMensal << endl;
   cout << " " << endl;
   

@@ -16,7 +16,7 @@ public:
 
   double getSaldo();
 
-  void displaySaldo();
+  void mostrarSaldo();
 
   void creditar(double quantia);
 

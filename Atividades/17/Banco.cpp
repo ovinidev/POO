@@ -29,9 +29,10 @@ double ContaBanco::getSaldo()
   return saldo;
 }
 
-void ContaBanco::displaySaldo()
+void ContaBanco::mostrarSaldo()
 {
   cout << "Saldo R$" << getSaldo() << endl;
+  cout << endl;
 }
 
 void ContaBanco::creditar(double quantia)

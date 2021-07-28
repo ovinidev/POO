@@ -6,19 +6,21 @@ int main() {
 
   ContaBanco contaBivar(120.00);
 
-  contaVictor.displaySaldo();
+  contaVictor.mostrarSaldo();
 
   contaVictor.creditar(55);
-  contaVictor.displaySaldo();
+  contaVictor.mostrarSaldo();
 
   contaVictor.debitar(20);
-  contaVictor.displaySaldo();
+  contaVictor.mostrarSaldo();
+
+  contaBivar.mostrarSaldo();
 
   contaBivar.creditar(90);
-  contaBivar.displaySaldo();
+  contaBivar.mostrarSaldo();
 
   contaBivar.debitar(10);
-  contaBivar.displaySaldo();
+  contaBivar.mostrarSaldo();
 
   return 0;
 }

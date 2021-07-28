@@ -2,9 +2,11 @@
 
 int main() {
   
-  Data data(2, 12, 20);
+  Data independenceDayBrazil(7, 9, 2021);
+  Data myBirthday(14, 04, 2002);
 
-  data.mostrarData();
+  independenceDayBrazil.mostrarData();
+  myBirthday.mostrarData();
 
   return 0;
 }
