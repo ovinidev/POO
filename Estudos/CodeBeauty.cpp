@@ -114,7 +114,6 @@ class Engineer:public Employee {
     void Work() { // Quando uma função virtual é invocada, ela fica globalmente
       cout << getName() << " is geting $" << getSalary() << " dolars" << endl;
     };
-
 };
 
 

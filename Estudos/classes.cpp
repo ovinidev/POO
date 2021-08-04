@@ -18,7 +18,7 @@ void Time::mostrarTime(){
   this -> nome = "Flamengo";
   this -> cor = "Vermelho";
   this -> estado = "Rio";
-  this -> titulos = 7;
+  this -> titulos = 8;
 
 };
 
