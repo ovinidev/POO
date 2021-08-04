@@ -11,13 +11,17 @@ int main() {
   HugeInteger test2;
 
   
-  test.input("99");
-  test2.input("99");
+  test.input("555");
+  test2.input("555");
   test.output();
   test2.output();
-  test.add(test2);
-  test.output();
-
+  
+  cout << "== " << test.isEqualTo(test2) << endl;
+  cout << "!= " << test.isNotEqualTo(test2) << endl;
+  cout << "> " << test.isGreaterThan(test2) << endl;
+  cout << "< " << test.isLessThan(test2) << endl;
+  cout << ">= " << test.isGreaterThanOrIqual(test2) << endl;
+  cout << "<= " << test.isLessThanOrIqual(test2) << endl;
 
   return 0;
 }

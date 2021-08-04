@@ -9,6 +9,7 @@ using std::strtol;
 void HugeInteger::input(string numero)
 {
   digits = numero.size();
+  size = 0;
 
   for (int i = 0; i < static_cast<int>(numero.size()); i++)
   {
@@ -23,6 +24,7 @@ void HugeInteger::input(string numero)
   for (int j = 0; j < digits; j++)
   {
     array[j] = numero[j];
+    size += 1;
   }
 }
 
@@ -44,5 +46,114 @@ void HugeInteger::add(HugeInteger object)
 
     char finalArray = (newArray + newArrayObject) + '0';
     array[j] = finalArray;
+  }
+}
+
+bool HugeInteger::isEqualTo(HugeInteger object)
+{
+  if (size != object.size)
+    return false;
+  
+  for (int j = 0; j < digits; j++)
+  {
+    if (array[j] != object.array[j])
+      return false;
+  }
+  return true;
+}
+
+bool HugeInteger::isNotEqualTo(HugeInteger object)
+{
+  if (size != object.size)
+    return true;
+
+  for (int j = 0; j < digits; j++)
+  {
+    if (array[j] != object.array[j])
+      return true;
+  }
+
+  return false;
+}
+
+bool HugeInteger::isGreaterThan(HugeInteger object)
+{
+  if (size > object.size)
+  {
+    return true;
+  }
+  if (size < object.size)
+  {
+    return false;
+  }
+
+  for (int j = 0; j < digits; j++)
+  {
+    newArray = array[j] - '0';
+    newArrayObject = object.array[j] - '0';
+
+    if (newArray > newArrayObject)
+    {
+      return true;
+    }
+    else if (newArray < newArrayObject)
+    {
+      return false;
+    }
+  }
+
+  return false;
+}
+
+bool HugeInteger::isLessThan(HugeInteger object)
+{
+  if (size > object.size)
+  {
+    return true;
+  }
+  if (size < object.size)
+  {
+    return false;
+  }
+
+  for (int j = 0; j < digits; j++)
+  {
+    newArray = array[j] - '0';
+    newArrayObject = object.array[j] - '0';
+
+    if (newArray < newArrayObject)
+    {
+      return true;
+    }
+    else if (newArray > newArrayObject)
+    {
+      return false;
+    }
+  }
+
+  return false;
+}
+
+bool HugeInteger::isGreaterThanOrIqual(HugeInteger object)
+{
+  if (isEqualTo(object) || isGreaterThan(object))
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
+bool HugeInteger::isLessThanOrIqual(HugeInteger object)
+{
+  if (isEqualTo(object) || isLessThan(object))
+  {
+    return true;
+  }
+  else
+  {
+    return false;
   }
 }
