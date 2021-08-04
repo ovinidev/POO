@@ -11,10 +11,13 @@ int main() {
   HugeInteger test2;
 
   
-  test.input("555");
-  test2.input("555");
+  test.input("111");
+  test2.input("888");
   test.output();
   test2.output();
+
+  test.add(test2);
+  test.output();
   
   cout << "== " << test.isEqualTo(test2) << endl;
   cout << "!= " << test.isNotEqualTo(test2) << endl;
