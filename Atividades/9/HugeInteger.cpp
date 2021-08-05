@@ -39,13 +39,26 @@ void HugeInteger::output()
 
 void HugeInteger::add(HugeInteger object)
 {
-  for (int j = 0; j < digits; j++)
+  for (int j = digits - 1; j >= 0; j--)
   {
     int newArray = array[j] - '0';
-    int newArrayObject = object.array[j] - '0';
-
+    int newArrayObject = (object.array[j] + carry) - '0';
+    int soma = newArray + newArrayObject;
     char finalArray = (newArray + newArrayObject) + '0';
-    array[j] = finalArray;
+
+    if (soma <= 9)
+    {
+      array[j] = finalArray;
+    }
+    else if (soma > 9)
+    {
+      carry = 0;
+      string numeroString(std::to_string(soma));
+      char digito1 = numeroString[0];
+      char digito2 = numeroString[1];
+      array[j] = digito2;
+      carry = digito1 - '0';
+    }
   }
 }
 
@@ -53,7 +66,7 @@ bool HugeInteger::isEqualTo(HugeInteger object)
 {
   if (size != object.size)
     return false;
-  
+
   for (int j = 0; j < digits; j++)
   {
     if (array[j] != object.array[j])

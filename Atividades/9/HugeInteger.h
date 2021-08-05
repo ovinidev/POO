@@ -29,6 +29,7 @@ private:
   int newArray;
   int newArrayObject;
   int size;
+  int carry = 0;
 };
 
 #endif
