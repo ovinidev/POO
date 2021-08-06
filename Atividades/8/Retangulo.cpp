@@ -12,12 +12,12 @@ Retangulo::Retangulo(double Largura, double Altura)
 
 void Retangulo::setLargura(double Largura)
 {
-  largura = (Largura > 0 && Largura < 24) ? Largura : 1;
+  largura = (Largura > 0 && Largura < 20.0) ? Largura : 1;
 }
 
 void Retangulo::setAltura(double Altura)
 {
-  altura = (Altura > 0 && Altura < 24) ? Altura : 1;
+  altura = (Altura > 0 && Altura < 20.0) ? Altura : 1;
 }
 
 double Retangulo::getLargura() {

@@ -7,24 +7,32 @@ using std::endl;
 
 int main() {
 
-  HugeInteger test;
-  HugeInteger test2;
+  HugeInteger var1;
+  HugeInteger var2;
 
-  
-  test.input("999");
-  test2.input("999");
-  test.output();
-  test2.output();
+  cout << "Exibindo var1:" << endl;
+  var1.input("999");
+  var1.output();
 
-  test.add(test2);
-  test.output();
-  
-  // cout << "== " << test.isEqualTo(test2) << endl;
-  // cout << "!= " << test.isNotEqualTo(test2) << endl;
-  // cout << "> " << test.isGreaterThan(test2) << endl;
-  // cout << "< " << test.isLessThan(test2) << endl;
-  // cout << ">= " << test.isGreaterThanOrIqual(test2) << endl;
-  // cout << "<= " << test.isLessThanOrIqual(test2) << endl;
+  cout << "Exibindo var2:" << endl;
+  var2.input("999");
+  var2.output();
+
+  cout << "Somando var2 em var1... " << endl;
+  var1.add(var2);
+
+  cout << "Exibindo var1:" << endl;
+  var1.output();
+
+  cout << endl;
+
+  cout << "1 = true e 0 = false" << endl;
+  cout << "var1 == var2? " << var1.isEqualTo(var2) << endl;
+  cout << "var1 != var2? " << var1.isNotEqualTo(var2) << endl;
+  cout << "var1 > var2? " << var1.isGreaterThan(var2) << endl;
+  cout << "var1 < var2? " << var1.isLessThan(var2) << endl;
+  cout << "var1 >= var2? " << var1.isGreaterThanOrIqual(var2) << endl;
+  cout << "var1 <= var2? " << var1.isLessThanOrIqual(var2) << endl;
 
   return 0;
 }

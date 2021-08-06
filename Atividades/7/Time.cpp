@@ -3,7 +3,6 @@
 using std::cout;
 using std::endl;
 
-//biblioteca que permite alguns controles sobre a saída
 #include <iomanip>
 using std::setfill; 
 using std::setw;
@@ -13,7 +12,6 @@ using std::setw;
 Time::Time(int hr, int min, int sec)
 {
   setTime(hr, min, sec);  
-  //qualquer modificação posterior em setTime reflete no construtor
 }
 
 Time::Time()
