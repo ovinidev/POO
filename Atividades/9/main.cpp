@@ -23,6 +23,7 @@ int main() {
 
   cout << "Exibindo var1:" << endl;
   var1.output();
+  var2.output();
 
   cout << endl;
 
@@ -34,5 +35,4 @@ int main() {
   cout << "var1 >= var2? " << var1.isGreaterThanOrIqual(var2) << endl;
   cout << "var1 <= var2? " << var1.isLessThanOrIqual(var2) << endl;
 
-  return 0;
 }

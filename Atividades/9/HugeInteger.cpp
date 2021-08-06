@@ -60,12 +60,15 @@ void HugeInteger::add(HugeInteger object)
       carry = digito1 - '0';
     }
   }
-  if (carry > 0) {
-    for (int j = digits - 1; j >= 0; j--) {
+  if (carry > 0)
+  {
+    for (int j = digits - 1; j >= 0; j--)
+    {
       array[j + 1] = array[j];
     }
     digits += 1;
     array[0] = carry + '0';
+    size += 1;
   }
 }
 
@@ -98,28 +101,18 @@ bool HugeInteger::isNotEqualTo(HugeInteger object)
 
 bool HugeInteger::isGreaterThan(HugeInteger object)
 {
-  if (size > object.size)
-  {
-    return true;
-  }
-  if (size < object.size)
-  {
-    return false;
-  }
+  if (size > object.size) return true;
 
+  if (size < object.size) return false;
+  
   for (int j = 0; j < digits; j++)
   {
     newArray = array[j] - '0';
     newArrayObject = object.array[j] - '0';
 
-    if (newArray > newArrayObject)
-    {
-      return true;
-    }
-    else if (newArray < newArrayObject)
-    {
-      return false;
-    }
+    if (newArray > newArrayObject) return true;
+
+    else if (newArray < newArrayObject) return false;
   }
 
   return false;
@@ -127,14 +120,9 @@ bool HugeInteger::isGreaterThan(HugeInteger object)
 
 bool HugeInteger::isLessThan(HugeInteger object)
 {
-  if (size > object.size)
-  {
-    return true;
-  }
-  if (size < object.size)
-  {
-    return false;
-  }
+  if (size < object.size) return true;
+
+  if (size > object.size) return false;
 
   for (int j = 0; j < digits; j++)
   {
