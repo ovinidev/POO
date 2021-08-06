@@ -49,16 +49,23 @@ void HugeInteger::add(HugeInteger object)
     if (soma <= 9)
     {
       array[j] = finalArray;
+      carry = 0;
     }
     else if (soma > 9)
     {
-      carry = 0;
       string numeroString(std::to_string(soma));
       char digito1 = numeroString[0];
       char digito2 = numeroString[1];
       array[j] = digito2;
       carry = digito1 - '0';
     }
+  }
+  if (carry > 0) {
+    for (int j = digits - 1; j >= 0; j--) {
+      array[j + 1] = array[j];
+    }
+    digits += 1;
+    array[0] = carry + '0';
   }
 }
 

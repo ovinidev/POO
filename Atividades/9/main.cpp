@@ -11,8 +11,8 @@ int main() {
   HugeInteger test2;
 
   
-  test.input("777");
-  test2.input("777");
+  test.input("999");
+  test2.input("999");
   test.output();
   test2.output();
 
