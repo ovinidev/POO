@@ -7,7 +7,7 @@ using std::endl;
 
 int main () {
 	char linha[] = "---------------------------------------------\n";
-	Agenda A;
+	Agenda A(30);
 
 	A.armazenaPessoa("Abel", 22, 1.78);
 	A.armazenaPessoa(Pessoa("Tiago", 20, 1.80));

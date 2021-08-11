@@ -2,35 +2,17 @@
 using std::cout;
 using std::endl;
 
-#include "Retangulo.h"
-
+#include "Pessoa.h"
 
 int main() {
-  Retangulo bloco(10.0, 15.0);
 
-  cout << "Exibindo altura: " << bloco.getAltura() << endl;
-  cout << "Exibindo largura: " << bloco.getLargura() << endl;
-  
-  cout << "Calculando área... " << endl;
-  bloco.calculaArea();
+  Pessoa p1("Vini", 19, 1.74), p2("Victor", 23, 1.76), p3("Bivar", 18, 1.70);
 
-  cout << "Calculando Perimetro... " << endl;
-  bloco.calculaPerimetro();
+  p1.print();
 
-  cout << endl;
+  p2.print();
 
-  Retangulo blocoInvalido(23.0, 19.9);
-
-  cout << "Exibindo altura: " << blocoInvalido.getAltura() << endl;
-  cout << "Exibindo largura: " << blocoInvalido.getLargura() << endl;
-  
-  cout << "Calculando área... " << endl;
-  blocoInvalido.calculaArea();
-
-  cout << "Calculando Perimetro... " << endl;
-  blocoInvalido.calculaPerimetro();
-
-  
+  p3.print();
 
   return 0;
 }
