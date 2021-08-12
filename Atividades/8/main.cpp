@@ -6,7 +6,7 @@ using std::endl;
 
 int main() {
 
-  Pessoa p1("Vini", 19, 1.74), p2("Victor", 23, 1.76), p3("Bivar", 18, 1.70);
+  Pessoa p1("Vini", 19, 1.74), p2("Victor", 23, 1.76), p3("Pedro", 18, 1.70);
 
   p1.print();
 
