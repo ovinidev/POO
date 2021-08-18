@@ -7,11 +7,18 @@ using std::string;
 
 class IntegerSet
 {
-  friend IntegerSet unionOfSets(IntegerSet, IntegerSet);
 
-  friend IntegerSet intersectionOfSets(IntegerSet, IntegerSet);
 
 public:
+
+  const IntegerSet operator<<(int k);
+
+  const IntegerSet operator>>(int k);
+
+  const IntegerSet &operator|(const IntegerSet &);
+
+  const IntegerSet &operator&(const IntegerSet &);
+
   IntegerSet();
 
   IntegerSet(int[], int);

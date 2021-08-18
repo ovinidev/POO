@@ -2,17 +2,64 @@
 using std::cout;
 using std::endl;
 
-#include "Pessoa.h"
+#include "HugeInteger.h"
 
 int main() {
+  HugeInteger h1("7974");
+  cout << h1 << endl;
 
-  Pessoa p1("Vini", 19, 1.74), p2("Victor", 23, 1.76), p3("Pedro", 18, 1.70);
+  HugeInteger h2("9784");
+  cout << h2 << endl;
 
-  p1.print();
+  if (h1 < h2) {
+    cout << "h1 " << "<" << " h2" << endl;
+  }
 
-  p2.print();
+  if (h1 > h2) {
+    cout << "h1 " << ">" << " h2" << endl;
+  }
 
-  p3.print();
+  if (h1 <= h2) {
+    cout << "h1 " << "<=" << " h2" << endl;
+  }
+
+  if (h1 >= h2) {
+    cout << "h1 " << ">=" << " h2" << endl;
+  }
+
+  if (h1 == h2) {
+    cout << "h1 " << "==" << " h2" << endl;
+  }
+
+  if (h1 != h2) {
+    cout << "h1 " << "!=" << " h2" << endl;
+  }
+
+  cout << "h1 = "; 
+  h1.output();
+  cout << endl << "h2 = ";
+  h2.output();
+  cout << endl;
+
+  h1 += h2;
+  h1.output();
+  cout << endl;
+
+  HugeInteger h3 = h1 + h2;
+
+  h3.output();
+  cout << endl;
+
+  HugeInteger h4 = "5000";
+
+  h4.output();
+  cout << endl;
+
+
+
+
+
+
 
   return 0;
 }
