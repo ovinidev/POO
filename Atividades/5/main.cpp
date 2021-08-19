@@ -6,7 +6,7 @@ using std::cin;
 #include "Array.h"
 
 int main() {
-  Array a1(2);  //array de 7 elementos
+  Array a1(5);  //array de 7 elementos
   Array a2(2);  //array de 10 elementos
 
   cin >> a1;
@@ -18,7 +18,7 @@ int main() {
 
   Array a5 = a1 + a2;
 
-  cout << "a5: " << a5;
+  cout << a5;
 
   cout << a1;   //escrevendo array
   cout << a2;   //escrevendo array

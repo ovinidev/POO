@@ -56,16 +56,15 @@ const Array &Array::operator+(const Array &obj)
 
   Array *aux = new Array(tamanhoTotal);
 
-
-  for (int i = 0; i < this->tam; i++) {
+  for (int i = 0; i < this->tam; i++)
+  {
     aux->arr[i] = this->arr[i];
-    
   }
 
-  for (int j = 0; j < obj.tam; j++) {
+  for (int j = 0; j < obj.tam; j++)
+  {
     aux->arr[j + this->tam] = obj.arr[j];
   }
-
 
   return *aux;
 }
@@ -73,10 +72,23 @@ const Array &Array::operator+(const Array &obj)
 const Array &Array::operator+=(const Array &obj)
 {
 
-  
-  for (int i = 0; i < this->tam; i++) {
-    this->arr[i] += obj.arr[i];
+  int tamanhoTotal = this->tam + obj.tam;
+
+  Array *aux = new Array[tamanhoTotal];
+
+  for (int i = 0; i < this->tam; i++)
+  {
+    aux->arr[i] = this->arr[i];
   }
+
+  for (int j = 0; j < obj.tam; j++)
+  {
+    aux->arr[j + this->tam] = obj.arr[j];
+  }
+
+  delete this->arr;
+  this->arr = aux->arr;
+  this->tam = tamanhoTotal;
 
   return *this;
 }
