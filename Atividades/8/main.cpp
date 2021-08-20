@@ -41,17 +41,27 @@ int main() {
   h2.output();
   cout << endl;
 
+  cout << "h1 += h2" << endl;
+
   h1 += h2;
+
+  cout << "h1 = ";
+
   h1.output();
   cout << endl;
 
+  cout << "h3 = h1 + h2" << endl;
+
   HugeInteger h3 = h1 + h2;
+
+  cout << "h3 = ";
 
   h3.output();
   cout << endl;
 
   HugeInteger h4 = "5000";
 
+  cout << "h4 = ";
   h4.output();
   cout << endl;
 

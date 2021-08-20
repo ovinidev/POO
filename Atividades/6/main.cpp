@@ -51,10 +51,12 @@ int main()
 
 	IntegerSet objB = numbers & numbers2;
 
-	cout << "TESTANDO" << endl;
-
+	cout << "União dos conjuntos: " << endl;
 	objA.print();
+
+	cout << "Interceção dos conjuntos: " << endl;
 	objB.print();
+
 
 
 	return 0;
