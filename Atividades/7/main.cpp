@@ -2,52 +2,41 @@
 using std::cout;
 using std::endl;
 
-#include "Complex.h"
+#include "Imovel.h"
+#include "ImovelVelho.h"
+#include "ImovelNovo.h"
+
 
 int main()
 {
-	Complex n1(5, 7);
-	Complex n2(2, 4);
-	Complex n6(8, 8);
+	ImovelNovo Apartamento("Campina Grande", 75000.70);
 
-	cout << "Elemento n1: " << n1 << endl;
-	cout << "Elemento n2: " << n2 << endl;
+	cout << "Apartamento localizado em: " << Apartamento.getAddress() << endl;
 
-	Complex n3 = n1 + n2;
+	cout << "Preço original do novo apartamento: R$ " << Apartamento.getPrice() << endl;
 
-	cout << "Elemento n3: " << n3 << endl;
+	Apartamento.setAdditional(5000.50);
 
-	Complex n4 = n1 - n2;
+	cout << "Aplicando o adicional de R$: " << Apartamento.getAdditional() << endl;
 
-	cout << "Elemento n4: " << n4 << endl;
+	cout << "Preço do apartamento com valor adicional: R$ " << Apartamento.getPrice() << endl;
 
-	cout << "n1 += n2: " << endl;
+	cout << endl;
 
-	n1 += n2;
+	ImovelVelho Quitinete("Ipanema", 20000.00);
 
-	n1.print();
+		cout << "Quitinete localizado em: " << Quitinete.getAddress() << endl;
 
-	cout << "n1 -= n2: " << endl;
+	cout << "Preço original da velha quitinete: R$ " << Quitinete.getPrice() << endl;
 
-	n1 -= n2;
+	Quitinete.setDiscount(3000.50);
 
-	n1.print();
+	cout << "Aplicando o desconto de: R$ " << Quitinete.getDiscount() << endl;
 
-	cout << "n1++ " << endl;
+	cout << "Preço da quitinete com o desconto: R$ " << Quitinete.getPrice() << endl;
 
-	n1++;
+	cout << endl;
 
-	n1.print();
-
-	cout << "n1-- " << endl;
-
-	n1--;
-
-	n1.print();
-
-	cout << "Elemento n6: " << endl;
-
-	cout << n6 << endl;
 
 	return 0;
 }
