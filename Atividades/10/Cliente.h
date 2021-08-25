@@ -10,6 +10,7 @@ class Cliente: public PessoaFisica
 {
 
   friend ostream &operator<<(ostream &, const Cliente&);
+  
 protected:
 
 public:
