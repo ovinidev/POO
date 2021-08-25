@@ -1,19 +1,18 @@
 #ifndef PESSOAJURIDICA_H
 #define PESSOAJURIDICA_H
 
-#include "Pessoa.h"
 
 #include <string>
 using std::string;
 
-class PessoaJuridica:public Pessoa
+class PessoaJuridica
 {
 protected:
 
 public:
   PessoaJuridica();
 
-  PessoaJuridica(string, int, string);
+  PessoaJuridica(int, string);
 
   void setCnpj(int);
 
@@ -26,6 +25,7 @@ public:
 private:
   int cnpj;
   string corporateName;
+
 };
 
 #endif

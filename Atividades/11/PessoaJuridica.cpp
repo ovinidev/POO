@@ -6,11 +6,12 @@ using std::string;
 #include "PessoaJuridica.h"
 
 PessoaJuridica::PessoaJuridica(){
-};
+
+}
 
 
-PessoaJuridica::PessoaJuridica(string name, int cnpj, string corporateName) : 
-Pessoa(name), cnpj(cnpj), corporateName(corporateName)
+PessoaJuridica::PessoaJuridica(int cnpj, string corporateName) : 
+cnpj(cnpj), corporateName(corporateName)
 {
 
 }

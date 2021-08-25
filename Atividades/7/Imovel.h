@@ -5,6 +5,7 @@ using std::string;
 
 class Imovel
 {
+
 protected:
   string address;
   double price;
@@ -20,9 +21,6 @@ public:
   void setPrice(double);
 
   double getPrice() const {return this->price;}
-
-
-
 
 
 private:

@@ -5,9 +5,7 @@ using std::string;
 
 #include "ImovelVelho.h"
 
-ImovelVelho::ImovelVelho(string address, double price) : Imovel(address, price)
-{
-
+ImovelVelho::ImovelVelho(string address, double price) : Imovel(address, price){
 }
 
 void ImovelVelho::setDiscount(double discount)
