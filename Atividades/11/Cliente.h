@@ -1,13 +1,13 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
 
-#include "PessoaJuridica.h"
+#include "PessoaFisica.h"
 
 #include <string>
 using std::string;
 using std::ostream;
 
-class Cliente: public PessoaJuridica
+class Cliente: public PessoaFisica
 {
   friend ostream &operator<<(ostream &, const Cliente&);
 protected:

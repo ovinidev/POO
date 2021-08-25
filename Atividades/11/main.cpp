@@ -6,6 +6,7 @@ using std::endl;
 #include "Empresa.h"
 #include "Funcionario.h"
 #include "PessoaJuridica.h"
+#include "PessoaFisica.h"
 
 
 int main()
