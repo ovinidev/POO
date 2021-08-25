@@ -29,11 +29,14 @@ public:
 
   void printClientes();
 
+  double calcularFolhaDePagamento();
+
 private:
   Funcionario funcionarios[5];
   Cliente clientes[5];
   int contFunc = 0;
   int contCli = 0;
+  double totalSalary;
 };
 
 #endif

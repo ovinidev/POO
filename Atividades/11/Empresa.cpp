@@ -25,7 +25,7 @@ Empresa::Empresa(string name) : name(name)
 void Empresa::addFuncionario(Funcionario f)
 {
 
-  this->funcionarios[0 + contFunc] = f;
+  this->funcionarios[contFunc] = f;
 
   this->contFunc++;
 }
@@ -33,14 +33,14 @@ void Empresa::addFuncionario(Funcionario f)
 void Empresa::addCliente(Cliente f)
 {
 
-  this->clientes[0 + contCli] = f;
+  this->clientes[contCli] = f;
 
   this->contCli++;
 }
 
 void Empresa::printFuncionarios()
 {
-  for (int i = 0; i < 5; i++)
+  for (int i = 0; i < contFunc; i++)
   {
     cout << this->funcionarios[i] << endl;
   }
@@ -48,8 +48,16 @@ void Empresa::printFuncionarios()
 
 void Empresa::printClientes()
 {
-  for (int j = 0; j < 5; j++)
+  for (int j = 0; j < contCli; j++)
   {
     cout << this->clientes[j] << endl;
   }
+}
+
+double Empresa::calcularFolhaDePagamento(){
+  for (int i = 0; i < contCli; i++) {
+    totalSalary = totalSalary + funcionarios[i].getSalary();
+  }
+
+  return totalSalary;
 }

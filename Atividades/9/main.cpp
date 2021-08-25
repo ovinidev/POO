@@ -11,7 +11,7 @@ int main()
 {
 	cout << "Criando funcionário..." << endl;
 
-	Funcionario p1("Peter Park", 215040, 1200.00, 100, 70);
+	Funcionario p1("Peter Park", 215040, 6000.00, 100, 70);
 
 	cout << p1;
 
@@ -34,6 +34,14 @@ int main()
 	cout << p2;
 
 	cout << p2.calculaSalarioBruto() << endl;
+
+	cout << endl;
+
+	cout << "Criando outro funcionário..." << endl;
+
+	Funcionario p3("Ragnar Lothbrook", 145412, 2400.00, 200, 300);
+
+	cout << p3;
 
 	cout << endl;
 

@@ -21,7 +21,7 @@ int main()
 
 	Cliente p2;
 
-	p2.setTelephone(99912154);
+	p2.setTelephone(996425589);
 	
 	p2.setAddress("New York");
 
