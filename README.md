@@ -14,5 +14,5 @@
 
 ### Compilando arquivos:
 ```
-$ g++ -Wall -std=c++17 main.cpp -o main  
+$ g++ -Wall -std=c++17 *.cpp -o main && ./main 
 ```
