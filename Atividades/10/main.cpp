@@ -1,32 +1,17 @@
 #include <iostream>
-using std::cout;
-using std::endl;
 
-#include "Cliente.h"
-#include "PessoaFisica.h"
-#include "Pessoa.h"
+#include "Conta.h"
+#include "ContaPoupanca.h"
+#include "ContaCorrenteComLimite.h"
+#include "ContaCorrenteComum.h"
 
+int main() {
 
-int main()
-{
-	cout << "Criando Cliente..." << endl;
+  Conta *contas[] = {
+  new ContaPoupanca(20, 1221, "Juca", 700.00), 
+  };
 
-	Cliente p1(993925589, "New Jersey");
+  contas[0]->print();
 
-	cout << p1;
-
-	cout << endl;
-
-	cout << "Criando outro Cliente..." << endl;
-
-	Cliente p2;
-
-	p2.setTelephone(996425589);
-	
-	p2.setAddress("New York");
-
-
-	cout << p2;
-
-	return 0;
+  return 0;
 }

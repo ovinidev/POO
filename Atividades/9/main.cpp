@@ -1,50 +1,21 @@
 #include <iostream>
-using std::cout;
-using std::endl;
 
-#include "Funcionario.h"
-#include "PessoaFisica.h"
-#include "Pessoa.h"
+#include "Quadrado.h"
+#include "Circulo.h"
+#include "Triangulo.h"
 
+int main() {
+  //FormaBidimensional fd(2); // ERRO!!!!
 
-int main()
-{
-	cout << "Criando funcionário..." << endl;
+  FormaBidimensional *formas[] = {new Quadrado(5.5), new Circulo(3.5), new Triangulo(2.0, 5.5)};
 
-	Funcionario p1("Peter Park", 215040, 6000.00, 100, 70);
+  for (int i = 0 ; i < 3 ; i++)
+  {
+    formas[i]->desenhar();
+    cout << "Area: " << formas[i]->calcularArea() << endl;
+    cout << "Perimetro: " << formas[i]->calcularPerimetro() << endl;
+    delete formas[i];
+  }
 
-	cout << p1;
-
-	cout << endl;
-
-	cout << "Criando outro funcionário..." << endl;
-
-	Funcionario p2;
-
-	p2.setName("Arlindo");
-	
-	p2.setSalary(2500.00);
-
-	p2.setMatriculation(1212440);
-
-	p2.setMonthlyWorkload(200);
-
-	p2.setHoursWorkedInMonth(100);
-
-	cout << p2;
-
-	cout << p2.calculaSalarioBruto() << endl;
-
-	cout << endl;
-
-	cout << "Criando outro funcionário..." << endl;
-
-	Funcionario p3("Ragnar Lothbrook", 145412, 2400.00, 200, 300);
-
-	cout << p3;
-
-	cout << endl;
-
-
-	return 0;
+  return 0;
 }
