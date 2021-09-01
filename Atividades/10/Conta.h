@@ -9,11 +9,11 @@ using std::string;
 class Conta
 {
 public:
-  Conta(int numDaConta, string nome, double saldo){}
+  Conta(int ,string ,double );
 
   virtual void deposito(double=0) = 0;
   virtual void retirada(double=0) = 0;
-  virtual void print() = 0;
+  virtual void print() const = 0;
 
 
 protected:

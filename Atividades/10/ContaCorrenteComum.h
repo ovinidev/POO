@@ -11,39 +11,13 @@ using std::endl;
 class ContaCorrenteComum : public Conta
 {
 public:
-  ContaCorrenteComum(int numDaConta, string nome, double saldo){}
+  ContaCorrenteComum(int, string, double);
 
-  virtual void deposito(double valor)
-  {
-    Transacao lista("22/07", valor, valor > 0 ? "credito" : "debito");
+  virtual void deposito(double = 0);
 
-    this->saldo += valor;
+  virtual void retirada(double = 0);
 
-    this->listaDeTransacao[this->cont] = lista;
-
-    cont++;
-  }
-
-  virtual void retirada(double valor)
-  {
-    valor = valor * -1;
-
-    Transacao lista("22/07", valor, valor > 0 ? "credito" : "debito");
-
-    this->saldo -= valor;
-
-    this->listaDeTransacao[this->cont] = lista;
-
-    cont++;
-  }
-
-  virtual void print()
-  {
-    cout << this->nome << endl;
-    cout << this->saldo << endl;
-    cout << this->numDaConta << endl;
-    cout << this->listaDeTransacao << endl;
-  }
+  virtual void print() const;
 };
 
 #endif

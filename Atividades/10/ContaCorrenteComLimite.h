@@ -11,48 +11,13 @@ using std::endl;
 class ContaCorrenteComLimite : public Conta
 {
 public:
-  ContaCorrenteComLimite(double limite, int numDaConta, string nome, double saldo){}
+  ContaCorrenteComLimite(double ,int ,string ,double );
 
-  virtual void deposito(double valor)
-  {
-    Transacao lista("22/07", valor, valor > 0 ? "credito" : "debito");
+  virtual void deposito(double valor);
 
-    this->saldo += valor;
+  virtual void retirada(double valor);
 
-    this->listaDeTransacao[this->cont] = lista;
-
-    cont++;
-  }
-
-  virtual void retirada(double valor)
-  {
-    valor = valor * -1;
-
-    Transacao lista("22/07", valor, valor > 0 ? "credito" : "debito");
-
-    if (this->saldo > limite)
-    {
-      this->saldo -= valor;
-    }
-    else
-    {
-      cout << "Limite de retirada atingido!" << endl;
-      return;
-    }
-
-    this->listaDeTransacao[this->cont] = lista;
-
-    cont++;
-  }
-
-  virtual void print()
-  {
-    cout << this->limite << endl;
-    cout << this->nome << endl;
-    cout << this->saldo << endl;
-    cout << this->numDaConta << endl;
-    cout << this->listaDeTransacao << endl;
-  }
+  virtual void print() const;
 
 private:
   double limite;
