@@ -6,12 +6,14 @@
 using std::cout;
 using std::endl;
 
-ContaPoupanca::ContaPoupanca(int aniversarioConta, int numDaConta, string nome, double saldo) : 
-Conta(numDaConta, nome, saldo), aniversarioConta(aniversarioConta) {}
+ContaPoupanca::ContaPoupanca(int aniversarioConta, int numDaConta, string nome, double saldo) : Conta(numDaConta, nome, saldo), aniversarioConta(aniversarioConta) {}
 
 void ContaPoupanca::deposito(double valor)
 {
-  this->saldo += valor;
+  if (valor > 0)
+  {
+    this->saldo += valor;
+  }
 
   Transacao lista("22/07", valor, valor > 0 ? "credito" : "debito");
 
@@ -35,14 +37,16 @@ void ContaPoupanca::retirada(double valor)
 
 void ContaPoupanca::print() const
 {
-  cout << this->aniversarioConta << endl;
-  cout << this->nome << endl;
-  cout << this->saldo << endl;
-  cout << this->numDaConta << endl;
+  cout << "Nome: " << this->nome << endl;
+  cout << "Saldo: $" << this->saldo << endl;
+  cout << "Num da conta: " << this->numDaConta << endl;
+  cout << "Dia da conta: " << this->aniversarioConta << endl;
 
-  for (int i = 0; i < this->cont ; i++) {
-    cout << this->listaDeTransacao[i].getData() << endl;
-    cout << this->listaDeTransacao[i].getValor() << endl;
-    cout << this->listaDeTransacao[i].getDescricao() << endl;
+  for (int i = 0; i < this->cont; i++)
+  {
+    cout << "Data da transação: " << this->listaDeTransacao[i].getData() << endl;
+    cout << "Valor da transação: $" << this->listaDeTransacao[i].getValor() << endl;
+    cout << "Descrição: " << this->listaDeTransacao[i].getDescricao() << endl;
+    cout << endl;
   }
 }

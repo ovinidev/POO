@@ -13,11 +13,13 @@ Agenda::Agenda(int tamanhodaAgenda)
   this->agenda = new Pessoa *[tamanhodaAgenda];
 }
 
-Agenda::~Agenda(){
-  for(int i = 0; i < this->quantidadeContados; i++){
+Agenda::~Agenda()
+{
+  for (int i = 0; i < this->quantidadeContados; i++)
+  {
     delete agenda[i];
   }
-  delete [] agenda;
+  delete[] agenda;
 }
 
 void Agenda::adicionaContato(Pessoa *pessoa)
@@ -34,22 +36,14 @@ void Agenda::buscaContato(string busca)
 {
   for (int i = 0; i < this->quantidadeContados; i++)
   {
-    if (busca == agenda[i]->getNome())
-    {
-      agenda[i]->exibirPessoa();
-      return;
-    }
-    else if (busca == agenda[i]->getCpf())
-    {
-      agenda[i]->exibirPessoa();
-      return;
-    }
-    else if (busca == agenda[i]->getCnpj())
+    if (busca == agenda[i]->getNome() || busca == agenda[i]->getCpf() || busca == agenda[i]->getCnpj())
     {
       agenda[i]->exibirPessoa();
       return;
     }
   }
+
+  cout << "Pessoa não encontrada!" << endl;
 }
 
 void Agenda::removeContato(string busca)
@@ -72,9 +66,10 @@ void Agenda::removeContato(string busca)
 
   delete agenda[pos];
 
-  for (int i = this->pos + 1; i < this->quantidadeContados; i++){
+  for (int i = this->pos + 1; i < this->quantidadeContados; i++)
+  {
     agenda[i - 1] = agenda[i];
   }
-  
+
   quantidadeContados--;
 }

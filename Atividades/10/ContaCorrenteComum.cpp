@@ -10,7 +10,10 @@ ContaCorrenteComum::ContaCorrenteComum(int numDaConta, string nome, double saldo
 
 void ContaCorrenteComum::deposito(double valor)
 {
-  this->saldo += valor;
+  if (valor > 0)
+  {
+    this->saldo += valor;
+  }
 
   Transacao lista("22/07", valor, valor > 0 ? "credito" : "debito");
 
@@ -34,14 +37,15 @@ void ContaCorrenteComum::retirada(double valor)
 
 void ContaCorrenteComum::print() const
 {
-  cout << this->nome << endl;
-  cout << this->numDaConta << endl;
-  cout << this->saldo << endl;
+  cout << "Nome: " << this->nome << endl;
+  cout << "Número da conta: " << this->numDaConta << endl;
+  cout << "Saldo: $" << this->saldo << endl;
 
   for (int i = 0; i < this->cont; i++)
   {
-    cout << this->listaDeTransacao[i].getData() << endl;
-    cout << this->listaDeTransacao[i].getValor() << endl;
-    cout << this->listaDeTransacao[i].getDescricao() << endl;
+    cout << "Data da transação: " << this->listaDeTransacao[i].getData() << endl;
+    cout << "Valor da transação: $" << this->listaDeTransacao[i].getValor() << endl;
+    cout << "Descrição: " << this->listaDeTransacao[i].getDescricao() << endl;
+    cout << endl;
   }
 }

@@ -27,7 +27,7 @@ public:
 
   virtual double calcularPerimetro()
   {
-    return 1;
+    return this->base * 3;
   }
 
 private:

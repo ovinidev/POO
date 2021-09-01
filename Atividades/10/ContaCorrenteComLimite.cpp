@@ -10,9 +10,13 @@ ContaCorrenteComLimite::ContaCorrenteComLimite(double limite, int numDaConta, st
 
 void ContaCorrenteComLimite::deposito(double valor)
 {
-  Transacao lista("22/07", valor, valor > 0 ? "credito" : "debito");
 
-  this->saldo += valor;
+  if (valor > 0)
+  {
+    this->saldo += valor;
+  }
+  
+  Transacao lista("22/07", valor, valor > 0 ? "credito" : "debito");
 
   this->listaDeTransacao[this->cont] = lista;
 
@@ -24,7 +28,6 @@ void ContaCorrenteComLimite::retirada(double valor)
   if (saldo + limite >= valor)
   {
     this->saldo -= valor;
-    cout << "oi" << endl;
   }
   else
   {
@@ -43,15 +46,16 @@ void ContaCorrenteComLimite::retirada(double valor)
 
 void ContaCorrenteComLimite::print() const
 {
-  cout << this->limite << endl;
-  cout << this->nome << endl;
-  cout << this->saldo << endl;
-  cout << this->numDaConta << endl;
+  cout << "Nome: " << this->nome << endl;
+  cout << "Número da conta: " << this->numDaConta << endl;
+  cout << "Saldo: $" << this->saldo << endl;
+  cout << "Limite: $" << this->limite << endl;
 
   for (int i = 0; i < this->cont; i++)
   {
-    cout << this->listaDeTransacao[i].getData() << endl;
-    cout << this->listaDeTransacao[i].getValor() << endl;
-    cout << this->listaDeTransacao[i].getDescricao() << endl;
+    cout << "Data da transação: " << this->listaDeTransacao[i].getData() << endl;
+    cout << "Valor da transação: $" << this->listaDeTransacao[i].getValor() << endl;
+    cout << "Descrição: " << this->listaDeTransacao[i].getDescricao() << endl;
+    cout << endl;
   }
 }

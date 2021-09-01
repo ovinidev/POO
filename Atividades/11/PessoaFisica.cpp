@@ -14,11 +14,11 @@ string cpf, string dataDeNascimento, string estadoCivil) : Pessoa( nome, enderec
 }
 
 void PessoaFisica::exibirPessoa() const{
-  cout << this->getNome() << endl;
-  cout << this->getEndereco() << endl;
-  cout << this->getEmail() << endl;
-  cout << this->getCpf() << endl;
-  cout << this->getDataDeNascimento() << endl;
-  cout << this->getEstadoCivil() << endl;
+  cout << "Nome: " << this->getNome() << endl;
+  cout << "Endereço: " << this->getEndereco() << endl;
+  cout << "Email: " << this->getEmail() << endl;
+  cout << "CPF: " << this->getCpf() << endl;
+  cout << "Data de Nascimento: " << this->getDataDeNascimento() << endl;
+  cout << "Estado Civil:" << this->getEstadoCivil() << endl;
   cout << endl;
 }

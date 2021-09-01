@@ -14,11 +14,11 @@ string cnpj, int inscricaoEstadual, string razaoSocial) : Pessoa( nome, endereco
 }
 
 void PessoaJuridica::exibirPessoa() const{
-  cout << this->getNome() << endl;
-  cout << this->getEndereco() << endl;
-  cout << this->getEmail() << endl;
-  cout << this->getCnpj() << endl;
-  cout << this->getInscricaoEstadual() << endl;
-  cout << this->getRazaoSocial() << endl;
+  cout << "Nome: " << this->getNome() << endl;
+  cout << "Endereço: " << this->getEndereco() << endl;
+  cout << "Email: " << this->getEmail() << endl;
+  cout << "CNPJ: " << this->getCnpj() << endl;
+  cout << "Inscrição Estadual: " << this->getInscricaoEstadual() << endl;
+  cout << "Razão Social: " << this->getRazaoSocial() << endl;
   cout << endl;
 }
