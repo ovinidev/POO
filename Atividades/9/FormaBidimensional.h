@@ -8,7 +8,6 @@ class FormaBidimensional
 public:
   FormaBidimensional(int numLados) : numLados(numLados) {}
 
-  //método virtual puro
   virtual void desenhar() = 0;
 
   virtual double calcularArea() = 0;
