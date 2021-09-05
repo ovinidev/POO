@@ -46,6 +46,14 @@ void Agenda::buscaContato(string busca)
   cout << "Pessoa não encontrada!" << endl;
 }
 
+void Agenda::listaContato()
+{
+  for (int i = 0; i < this->quantidadeContados; i++)
+  {
+    agenda[i]->exibirPessoa();
+  }
+}
+
 void Agenda::removeContato(string busca)
 {
   for (int i = 0; i < this->quantidadeContados; i++)

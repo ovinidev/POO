@@ -20,6 +20,9 @@ public:
 
   void removeContato(string);
 
+  void listaContato();
+
+
 private:
   int tamanhoAgenda;
   int quantidadeContados = 0;

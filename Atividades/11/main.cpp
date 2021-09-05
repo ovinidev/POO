@@ -28,11 +28,15 @@ int main()
 
   agenda.buscaContato("Vinicius");
   agenda.buscaContato("15454212");
-  agenda.buscaContato("Juca");
-  agenda.buscaContato("411212");
 
   agenda.buscaContato("Cristiano");
 
+  cout << endl;
+
+  cout << "============================" << endl;
+  cout << "Exibindo a lista de contatos" << endl;
+
+  agenda.listaContato();
 
 
   return 0;
