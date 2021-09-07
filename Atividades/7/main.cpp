@@ -126,7 +126,7 @@ bool removerFerramenta(std::fstream &f, int registro)
 
   if (achou == true)
   {
-    c.numDoRegistro = -1; 
+    c.numDoRegistro = -1;
     f.write(reinterpret_cast<char *>(&c), sizeof(D_CONTA));
     f.flush();
   }
@@ -143,7 +143,7 @@ bool valida(int n_conta)
 
 int main()
 {
-  std::fstream fileIO("dados.dat", std::ios::out | std::ios::in);
+  std::fstream fileIO("hardware.dat", std::ios::out | std::ios::in);
 
   if (!fileIO)
     return 1;
@@ -181,7 +181,6 @@ int main()
       cout << "preco: ";
       cin >> c.preco;
 
-      cout << "QUANTIDADE DE FERRAMENTA " << tFerramentas << endl;
       cadastrarFerramenta(fileIO, c);
       break;
     }
