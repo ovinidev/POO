@@ -3,7 +3,6 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-//using std::ios;
 using std::defaultfloat;
 using std::fixed;
 
@@ -41,7 +40,6 @@ bool listarFerramentas(std::fstream &f)
   cout << fixed;
   f.clear();
 
-  //posiciona "ponto de leitura" para o byte 0
   f.seekg(0);
   while (true)
   {
