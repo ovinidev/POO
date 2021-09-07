@@ -19,24 +19,25 @@ using std::setprecision;
 using std::ifstream;
 using std::ofstream;
 
-int tContas;
-
-//um registro para organizar dados
 struct D_CONTA
 {
   int numDoRegistro;
   char nomeDaFerramenta[20];
   double preco;
   int quantidade;
-  int status;
 };
 
+int tFerramentas = 0;
+
 bool listarFerramentas(std::fstream &f)
-{  
+{
   D_CONTA c;
 
-  cout << " N DO REGISTRO " << "      FERRAMENTA     " << "   QUANTIDADE  " << "PREÇO (R$)" << endl;
-  
+  cout << " N DO REGISTRO "
+       << "      FERRAMENTA     "
+       << "   QUANTIDADE  "
+       << "PREÇO (R$)" << endl;
+
   cout << fixed;
   f.clear();
 
@@ -44,16 +45,12 @@ bool listarFerramentas(std::fstream &f)
   f.seekg(0);
   while (true)
   {
-    f.read(reinterpret_cast<char *> (&c),sizeof(D_CONTA));
+    f.read(reinterpret_cast<char *>(&c), sizeof(D_CONTA));
 
     if (f.eof())
       break;
 
-    if (!c.status)
-      continue;
-    
-    cout << 
-    setw(7) << c.numDoRegistro << ' ' << setw(20) << right << c.nomeDaFerramenta << ' ' << setw(15) << right << setprecision(2) << c.quantidade << ' ' << setw(10) << right << setprecision(2) << c.preco << endl;
+    cout << setw(7) << c.numDoRegistro << ' ' << setw(20) << right << c.nomeDaFerramenta << ' ' << setw(15) << right << setprecision(2) << c.quantidade << ' ' << setw(10) << right << setprecision(2) << c.preco <<  endl;
   }
   cout << defaultfloat;
 
@@ -65,21 +62,19 @@ bool cadastrarFerramenta(std::fstream &f, D_CONTA &c)
   D_CONTA ant;
 
   f.clear();
-  f.seekg((tContas - 1) * sizeof(D_CONTA));
+  f.seekg((tFerramentas - 1) * sizeof(D_CONTA));
 
   f.read(reinterpret_cast<char *>(&ant), sizeof(D_CONTA));
 
-  c.numDoRegistro += 1;
-  c.status = 1;
+  c.numDoRegistro++;
 
-  f.seekp(tContas * sizeof(D_CONTA));
+  f.seekp(tFerramentas * sizeof(D_CONTA));
 
   f.write(reinterpret_cast<char *>(&c), sizeof(D_CONTA));
 
-  //força a escrita imediata no arquivo
   f.flush();
 
-  tContas++;
+  tFerramentas++;
 
   return true;
 }
@@ -90,7 +85,6 @@ int contar_registros(std::fstream &f)
   int toR = 0;
 
   f.clear();
-  //posiciona "ponto de leitura" para o byte 0
   f.seekg(0);
   while (true)
   {
@@ -105,6 +99,29 @@ int contar_registros(std::fstream &f)
   return toR;
 }
 
+bool removerFerramenta(std::fstream &f, int valor)
+{
+  D_CONTA c;
+
+  f.clear();
+  f.seekg((valor - 1) * sizeof(D_CONTA));
+
+  f.read(reinterpret_cast<char *>(&c), sizeof(D_CONTA));
+
+
+  f.seekp((valor - 1) * sizeof(D_CONTA));
+
+  f.write(reinterpret_cast<char *>(&c), sizeof(D_CONTA));
+
+  f.flush();
+  return true;
+}
+
+bool valida(int n_conta)
+{
+  return ((n_conta % 100) == 0) && ((n_conta / 100 >= 1) && (n_conta / 100 <= tFerramentas));
+}
+
 int main()
 {
   std::fstream fileIO("dados.dat", std::ios::out | std::ios::in);
@@ -112,15 +129,16 @@ int main()
   if (!fileIO)
     return 1;
 
-  tContas = contar_registros(fileIO);
+  tFerramentas = contar_registros(fileIO);
 
   while (1)
   {
-    cout << "---------------------------------------------------------------------" << endl;
+    cout << "--------------------------------------------------" << endl;
     cout << "Ferramentas." << endl;
     cout << "Opções:" << endl;
-    cout << "0 - Listar Todos os Clientes" << endl;
-    cout << "1 - Cadastrar novo Cliente" << endl;
+    cout << "0 - Listar Todos as ferramentas" << endl;
+    cout << "1 - Cadastrar nova ferramenta" << endl;
+    cout << "2 - Remover ferramenta" << endl;
     cout << endl
          << "-1 - Sair" << endl;
     cout << "Op: ";
@@ -144,8 +162,17 @@ int main()
       cout << "preco: ";
       cin >> c.preco;
 
-
+      cout << "QUANTIDADE DE FERRAMENTA " << tFerramentas << endl;
       cadastrarFerramenta(fileIO, c);
+      break;
+    }
+    case 2:
+    {
+      int numReg;
+      cout << "numero: " << numReg << endl;
+      cout << "Entre com o num do registro: ";
+      cin >> numReg;
+        removerFerramenta(fileIO, numReg);
       break;
     }
 
@@ -155,7 +182,6 @@ int main()
       break;
 
     default:
-      //
       break;
 
       return 0;
