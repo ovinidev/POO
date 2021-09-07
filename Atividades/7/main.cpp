@@ -50,7 +50,8 @@ bool listarFerramentas(std::fstream &f)
     if (f.eof())
       break;
 
-    cout << setw(7) << c.numDoRegistro << ' ' << setw(20) << right << c.nomeDaFerramenta << ' ' << setw(15) << right << setprecision(2) << c.quantidade << ' ' << setw(10) << right << setprecision(2) << c.preco <<  endl;
+    if (c.numDoRegistro > 0)
+      cout << setw(7) << c.numDoRegistro << ' ' << setw(20) << right << c.nomeDaFerramenta << ' ' << setw(15) << right << setprecision(2) << c.quantidade << ' ' << setw(10) << right << setprecision(2) << c.preco << endl;
   }
   cout << defaultfloat;
 
@@ -95,17 +96,40 @@ int contar_registros(std::fstream &f)
   return toR;
 }
 
-bool removerFerramenta(std::fstream &f, int valor, D_CONTA &c)
+bool removerFerramenta(std::fstream &f, int registro)
 {
+  D_CONTA c;
+
   f.clear();
 
-  c.numDoRegistro = -1;
+  int linha = 0;
+  bool achou = false;
 
-  f.seekp(tFerramentas * sizeof(D_CONTA));
+  f.seekg(0);
+  while (true)
+  {
+    f.read(reinterpret_cast<char *>(&c), sizeof(D_CONTA));
 
-  f.write(reinterpret_cast<char *>(&c), sizeof(D_CONTA));
+    if (f.eof())
+      break;
 
-  f.flush();
+    if (registro == c.numDoRegistro)
+    {
+      achou = true;
+      break;
+    }
+
+    linha += 1;
+  }
+
+  f.seekp(linha * sizeof(D_CONTA));
+
+  if (achou == true)
+  {
+    c.numDoRegistro = -1; 
+    f.write(reinterpret_cast<char *>(&c), sizeof(D_CONTA));
+    f.flush();
+  }
 
   tFerramentas--;
 
@@ -163,12 +187,11 @@ int main()
     }
     case 2:
     {
-      D_CONTA c;
       int numReg;
       cout << "numero: " << numReg << endl;
       cout << "Entre com o num do registro: ";
       cin >> numReg;
-        removerFerramenta(fileIO, numReg, c);
+      removerFerramenta(fileIO, numReg);
       break;
     }
 
