@@ -27,7 +27,7 @@ struct D_CONTA
   int quantidade;
 };
 
-int tFerramentas = 0;
+int tFerramentas;
 
 bool listarFerramentas(std::fstream &f)
 {
@@ -59,14 +59,10 @@ bool listarFerramentas(std::fstream &f)
 
 bool cadastrarFerramenta(std::fstream &f, D_CONTA &c)
 {
-  D_CONTA ant;
 
   f.clear();
-  f.seekg((tFerramentas - 1) * sizeof(D_CONTA));
 
-  f.read(reinterpret_cast<char *>(&ant), sizeof(D_CONTA));
-
-  c.numDoRegistro++;
+  c.numDoRegistro += 1;
 
   f.seekp(tFerramentas * sizeof(D_CONTA));
 
@@ -99,21 +95,20 @@ int contar_registros(std::fstream &f)
   return toR;
 }
 
-bool removerFerramenta(std::fstream &f, int valor)
+bool removerFerramenta(std::fstream &f, int valor, D_CONTA &c)
 {
-  D_CONTA c;
-
   f.clear();
-  f.seekg((valor - 1) * sizeof(D_CONTA));
 
-  f.read(reinterpret_cast<char *>(&c), sizeof(D_CONTA));
+  c.numDoRegistro = -1;
 
-
-  f.seekp((valor - 1) * sizeof(D_CONTA));
+  f.seekp(tFerramentas * sizeof(D_CONTA));
 
   f.write(reinterpret_cast<char *>(&c), sizeof(D_CONTA));
 
   f.flush();
+
+  tFerramentas--;
+
   return true;
 }
 
@@ -168,11 +163,12 @@ int main()
     }
     case 2:
     {
+      D_CONTA c;
       int numReg;
       cout << "numero: " << numReg << endl;
       cout << "Entre com o num do registro: ";
       cin >> numReg;
-        removerFerramenta(fileIO, numReg);
+        removerFerramenta(fileIO, numReg, c);
       break;
     }
 
