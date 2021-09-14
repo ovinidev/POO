@@ -1,83 +1,32 @@
 #include <iostream>
-using std::cin;
 using std::cout;
 using std::endl;
+using std::cin;
 
-using std::defaultfloat;
-using std::fixed;
+#include "Array.h"
 
-using std::left;
-using std::right;
+int main() {
+  Array <int>a1(7);  //array de 7 elementos
+  Array <int>a2;     //array de 10 elementos
 
-#include <iomanip>
-using std::setw;
+  cin >> a1;    //lendo array 
 
-using std::setprecision;
+  cout << a1;   //escrevendo array
 
-#include <fstream>
-using std::ifstream;
-using std::ofstream;
+  if (a1 == a2)
+    cout << "a1 e a2 são iguais";
 
-struct TIPOS_DADOS
-{
-  char tipoDeDado[30];
-  int dado;
-};
+  Array <int>a3(a1);
 
-TIPOS_DADOS dados[8] = {
-    {"int", sizeof(int)},
-    {"double", sizeof(double)},
-    {"short", sizeof(short)},
-    {"long", sizeof(long)},
-    {"char", sizeof(char)},
-    {"bool", sizeof(bool)},
-    {"float", sizeof(float)},
-    {"long double", sizeof(long double)}};
+  a3[5] = 100; //invoca int &operator[](int)
 
-bool salvaDados(TIPOS_DADOS c[], int n)
-{
-  ofstream fout("tiposDeDados.dat", std::ios::out);
+  cout << "a3[5] == " << a3[5] << endl;  //int operator[](int) const
 
-  if (!fout)
-    return false;
+  a2 = a3;
 
-  for (int i = 0; i < n; i++)
-    fout << c[i].dado << ' ' << c[i].tipoDeDado << ' ' << endl;
+  cout << "a2[5] == " << a3[5] << endl;
 
-  fout.close();
-
-  return true;
-}
-
-bool exibeDados()
-{
-  ifstream fin("tiposDeDados.dat", std::ios::in);
-
-  if (!fin)
-    return false;
-
-  TIPOS_DADOS c;
-
-  cout << "VALOR EM BYTE "
-       << "      TIPO DE DADO     " << endl;
-
-  cout << fixed;
-  while (fin >> c.dado >> c.tipoDeDado)
-  {
-    cout << setw(6) << c.dado << ' ' << setw(20) << right << c.tipoDeDado << ' ' << setw(8) << right << endl;
-  }
-  cout << defaultfloat;
-
-  fin.close();
-
-  return true;
-}
-
-int main()
-{
-  salvaDados(dados, 8);
-
-  exibeDados();
+  a2[100] = 50;
 
   return 0;
 }
