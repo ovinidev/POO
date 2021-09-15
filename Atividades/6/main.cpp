@@ -3,11 +3,14 @@ using std::cout;
 using std::endl;
 using std::cin;
 
+#include <string>
+using std::string;
+
 #include "Array.h"
 
 int main() {
-  Array <int>a1(7);  //array de 7 elementos
-  Array <int>a2;     //array de 10 elementos
+  Array<double> a1(7);  //array de 7 elementos
+  Array<double> a2;     //array de 10 elementos
 
   cin >> a1;    //lendo array 
 
@@ -16,7 +19,7 @@ int main() {
   if (a1 == a2)
     cout << "a1 e a2 são iguais";
 
-  Array <int>a3(a1);
+  Array<double> a3(a1);
 
   a3[5] = 100; //invoca int &operator[](int)
 

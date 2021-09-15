@@ -2,86 +2,80 @@
 #define ARRAY_H
 
 #include <iostream>
-using std::ostream;
+using std::cerr;
+using std::endl;
 using std::istream;
+using std::ostream;
 
 template <class T>
 class Array
 {
   // cout << obj
-  friend ostream &operator<<( ostream &, const Array &);
+  friend ostream &operator<<(ostream &out, const Array<T> &a)
+  {
+    for (int i = 0; i < a.tam; i++)
+      out << a.arr[i] << " ";
+
+    out << endl;
+
+    return out;
+  }
 
   // cin >> obj
-  friend istream &operator>>( istream &, Array &);
+  friend istream &operator>>(istream &inp, Array<T> &a)
+  {
+    for (int i = 0; i < a.tam; i++)
+      inp >> a.arr[i];
+
+    return inp;
+  }
+
 public:
-  Array( int = 10 );    //construtor-padrão
-  Array(const Array &); //construtor de cópia
+  Array(int = 10);      //construtor-padrão
+  Array(const Array<T> &); //construtor de cópia
   ~Array();             //destrutor
 
   int getSize() const;
 
-  
-  const Array &operator=( const Array & ); //operador atribuição. "const Array &" evita algo como (a = b) = c
+  const Array<T> &operator=(const Array<T> &); //operador atribuição. "const Array &" evita algo como (a = b) = c
 
-  bool operator==( const Array & ) const; //operador de igualdade
+  bool operator==(const Array &) const; //operador de igualdade
 
-  bool operator!=( const Array &dir) const
+  bool operator!=(const Array &dir) const
   {
     return !(*this == dir);
   }
 
-  int &operator[](T); //permite modificar o elemento
-  int operator[](T) const; //não permite modificar o elemento
+  T &operator[](int);      //permite modificar o elemento
+  T operator[](int) const; //não permite modificar o elemento
 
 private:
   int tam;
-  int *arr;
+  T *arr;
 };
-
-template <class T>
-ostream &operator<<(ostream &out , const Array<T> & a)
-{
-  for (int i = 0 ; i < a.tam ; i++)
-    out << a.arr[i] << " ";
-  
-  out << endl;
-
-  return out;
-}
-
-template <class T>
-istream &operator>>(istream &inp, Array<T> & a)
-{
-  for (int i = 0 ; i < a.tam ; i++)
-    inp >> a.arr[i];
-  
-  return inp;
-}
 
 template <class T>
 Array<T>::Array(int tam)
 {
   this->tam = (tam > 0 ? tam : 10);
 
-  arr = new int[this->tam];
+  arr = new T[this->tam];
 
-  for (int i = 0 ; i < this->tam ; i++)
-    arr[i] = 0;
 }
 
 template <class T>
-Array<T>::Array(const Array &obj) : tam(obj.tam)
+Array<T>::Array(const Array<T> &obj) : tam(obj.tam)
 {
-  arr = new int[this->tam];
+  arr = new T[this->tam];
 
-  for (int i = 0 ; i < this->tam ; i++)
+  for (int i = 0; i < this->tam; i++)
     arr[i] = obj.arr[i];
 }
 
 template <class T>
 Array<T>::~Array()
 {
-  delete [] arr;
+  delete[] arr;
 }
 
 template <class T>
@@ -97,15 +91,14 @@ const Array<T> &Array<T>::operator=(const Array<T> &obj)
   {
     if (this->tam != obj.tam)
     {
-      delete [] this->arr;
+      delete[] this->arr;
       this->tam = obj.tam;
-      this->arr = new int[this->tam];
+      this->arr = new T[this->tam];
     }
 
-    for (int i = 0 ; i < this->tam ; i++)
+    for (int i = 0; i < this->tam; i++)
       arr[i] = obj.arr[i];
-
-  }T
+  }
 
   return *this;
 }
@@ -116,15 +109,15 @@ bool Array<T>::operator==(const Array &obj) const
   if (this->tam != obj.tam)
     return false;
 
-  for (int i = 0 ; i < this->tam ; i++)
+  for (int i = 0; i < this->tam; i++)
     if (arr[i] != obj.arr[i])
       return false;
-  
+
   return true;
 }
 
 template <class T>
-int &Array<T>::operator[](T i)
+T &Array<T>::operator[](int i)
 {
   if (i < 0 || i >= tam)
   {
@@ -137,7 +130,7 @@ int &Array<T>::operator[](T i)
 }
 
 template <class T>
-int Array<T>::operator[](T i) const
+T Array<T>::operator[](int i) const
 {
   if (i < 0 || i >= tam)
   {

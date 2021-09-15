@@ -1,20 +1,44 @@
 #include <iostream>
 #include "Fila.h"
+using std::cout;
+using std::endl;
+using std::cin;
 
 int main()
 {
-  Fila<int> *numeros = new Fila<int>;
+
+  cout << "FILA DE INTEIROS: " << endl; 
+  cout << endl;
+
+  Fila<int> *inteiros = new Fila<int>;
 
   for(int i = 0; i <= 10; i++)
-    numeros->insereElementos(i + 10);
+    inteiros->insereElementos(i + 10);
 
-  std::cout << std::endl;
+  cout << endl;
 
-  numeros->print();
+  inteiros->print();
 
   for(int i = 0; i <= 10; i++)
-    numeros->retiraElementos();
+    inteiros->retiraElementos();
 
-  system("PAUSE");
+  cout << endl;
+
+  cout << "FILA DE DOUBLES: " << endl; 
+  cout << endl;
+
+  Fila<double> *doublers = new Fila<double>;
+
+  for(int i = 0; i <= 10; i++)
+    doublers->insereElementos(i + 1.5);
+
+  cout << endl;
+
+  doublers->print();
+
+  for(int i = 0; i <= 10; i++)
+    doublers->retiraElementos();
+
+
   return 0;
 }
