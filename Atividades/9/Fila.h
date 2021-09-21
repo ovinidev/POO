@@ -1,8 +1,13 @@
 #include <iostream>
 #include <string>
 
+using std::cerr;
 using std::cout;
 using std::endl;
+
+#include <stdexcept>
+using std::range_error;
+using std::runtime_error;
 
 template <class T>
 class Fila
@@ -37,28 +42,46 @@ Fila<T>::~Fila()
 template <class T>
 void Fila<T>::insereElementos(const T &val)
 {
-  if (tam < 10)
+  try
   {
-    listaFila[tam] = val;
-    cout << "Inserindo " << listaFila[tam] << endl;
-    tam++;
+    if (tam < 10)
+    {
+      listaFila[tam] = val;
+      cout << "Inserindo " << listaFila[tam] << endl;
+      tam++;
+    }
+    else
+    {
+      throw runtime_error("Fica cheia!!!!");
+    }
   }
-  else
-    cout << "Fila cheia!!! valor: " << val << " nao inserido!" << endl;
+  catch (runtime_error &e)
+  {
+    cerr << e.what() << endl;
+  }
 }
 
 template <class T>
 void Fila<T>::retiraElementos()
 {
-  if (tam > 0)
+  try
   {
-    tam--;
-    cout << "Removendo " << listaFila[aux] << " da fila" << endl;
-    listaFila[aux] = NULL;
-    aux++;
+    if (tam > 0)
+    {
+      tam--;
+      cout << "Removendo " << listaFila[aux] << " da fila" << endl;
+      listaFila[aux] = NULL;
+      aux++;
+    }
+    else
+    {
+      throw runtime_error("Fica vazia!!!!");
+    }
   }
-  else
-    cout << "Fila vazia!!!" << endl;
+  catch (runtime_error &e)
+  {
+    cerr << e.what() << endl;
+  }
 }
 
 template <class T>

@@ -1,44 +1,46 @@
 #include <iostream>
-#include "Fila.h"
 using std::cout;
 using std::endl;
 using std::cin;
+using std::cerr;
 
-int main()
+#include "VelocidadeZero.h"
+
+double velocidade(double d, double t)
 {
+  if (d == 0 or t == 0)
+    throw VelocidadeZero();
+  
+  return d/t;
+}
 
-  cout << "FILA DE INTEIROS: " << endl; 
-  cout << endl;
+int main() {
+  double vel, dist, tempo;
+  int obj = 1;
 
-  Fila<int> *inteiros = new Fila<int>;
+  cout << "Calculando a velocidade de 3 objetos: " << endl;
 
-  for(int i = 0; i <= 10; i++)
-    inteiros->insereElementos(i + 10);
+  while (obj <= 3)
+  {
+    cout << "Objeto " << obj << ": " << endl;
+    cout << " Distancia (m): ";
+    cin >> dist;
+    cout << " Tempo (s): ";
+    cin >> tempo;
 
-  cout << endl;
-
-  inteiros->print();
-
-  for(int i = 0; i <= 10; i++)
-    inteiros->retiraElementos();
-
-  cout << endl;
-
-  cout << "FILA DE DOUBLES: " << endl; 
-  cout << endl;
-
-  Fila<double> *doublers = new Fila<double>;
-
-  for(int i = 0; i <= 10; i++)
-    doublers->insereElementos(i + 1.5);
-
-  cout << endl;
-
-  doublers->print();
-
-  for(int i = 0; i <= 10; i++)
-    doublers->retiraElementos();
-
+    try
+    {
+      vel = velocidade(dist,tempo);
+      cout << " Velocidade " << vel << " m/s" << endl;
+    }
+    catch(VelocidadeZero &e)
+    {
+      cerr << e.what() << endl;
+      obj--;
+    }
+    
+    obj++;
+  }
 
   return 0;
 }
