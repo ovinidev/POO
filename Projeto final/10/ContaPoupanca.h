@@ -13,7 +13,6 @@ class ContaPoupanca : public Conta
 public:
   ContaPoupanca(int, int, string, double);
 
-
   virtual void deposito(double=0);
   virtual void retirada(double=0);
   virtual void print() const;
