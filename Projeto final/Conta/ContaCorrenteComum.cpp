@@ -1,12 +1,13 @@
 #include "ContaCorrenteComum.h"
 
-#include "Transacao.h"
+#include "../Transacao/Transacao.h"
+#include "../Pessoa/Pessoa.h"
 
 #include <iostream>
 using std::cout;
 using std::endl;
 
-ContaCorrenteComum::ContaCorrenteComum(int numDaConta, string nome, double saldo) : Conta(numDaConta, nome, saldo) {}
+ContaCorrenteComum::ContaCorrenteComum(int numDaConta, Pessoa &nomeCorrentista, double saldo) : Conta(numDaConta, nomeCorrentista, saldo) {}
 
 void ContaCorrenteComum::deposito(double valor)
 {
@@ -37,7 +38,7 @@ void ContaCorrenteComum::retirada(double valor)
 
 void ContaCorrenteComum::print() const
 {
-  cout << "Nome: " << this->nome << endl;
+  cout << "Nome: " << this->nomeCorrentista->getNome() << endl;
   cout << "Número da conta: " << this->numDaConta << endl;
   cout << "Saldo: $" << this->saldo << endl;
 

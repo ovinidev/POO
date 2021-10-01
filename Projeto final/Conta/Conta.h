@@ -2,14 +2,15 @@
 #define CONTA_H
 
 #include <string>
-#include "Transacao.h"
+#include "../Pessoa/Pessoa.h"
+#include "../Transacao/Transacao.h"
 
 using std::string;
 
 class Conta
 {
 public:
-  Conta(int ,string ,double );
+  Conta(int, Pessoa &,double );
 
   virtual void deposito(double=0) = 0;
   virtual void retirada(double=0) = 0;
@@ -17,7 +18,7 @@ public:
 
 
 protected:
-  string nome;
+  Pessoa *nomeCorrentista;
   Transacao listaDeTransacao[100];
   int cont = 0;
   double saldo;

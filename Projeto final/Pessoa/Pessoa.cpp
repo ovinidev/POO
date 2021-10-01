@@ -6,6 +6,6 @@ using std::string;
 
 #include "Pessoa.h"
 
-Pessoa::Pessoa(string nome, string endereco, string email) : nome(nome), endereco(endereco), email(email)
+Pessoa::Pessoa(string nome, string email) : nome(nome), email(email)
 {
 }

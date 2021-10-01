@@ -2,7 +2,8 @@
 #define CONTACORRENTECOMUM_H
 
 #include "Conta.h"
-#include "Transacao.h"
+#include "../Transacao/Transacao.h"
+#include "../Pessoa/Pessoa.h"
 
 #include <iostream>
 using std::cout;
@@ -11,7 +12,7 @@ using std::endl;
 class ContaCorrenteComum : public Conta
 {
 public:
-  ContaCorrenteComum(int, string, double);
+  ContaCorrenteComum(int, Pessoa &, double);
 
   virtual void deposito(double = 0);
 

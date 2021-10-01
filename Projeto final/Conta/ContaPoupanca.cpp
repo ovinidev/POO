@@ -1,12 +1,13 @@
 #include "ContaPoupanca.h"
 
-#include "Transacao.h"
+#include "../Transacao/Transacao.h"
+#include "../Pessoa/Pessoa.h"
 
 #include <iostream>
 using std::cout;
 using std::endl;
 
-ContaPoupanca::ContaPoupanca(int aniversarioConta, int numDaConta, string nome, double saldo) : Conta(numDaConta, nome, saldo), aniversarioConta(aniversarioConta) {}
+ContaPoupanca::ContaPoupanca(int aniversarioConta, int numDaConta, Pessoa &nomeCorrentista, double saldo) : Conta(numDaConta, nomeCorrentista, saldo), aniversarioConta(aniversarioConta) {}
 
 void ContaPoupanca::deposito(double valor)
 {
@@ -37,7 +38,7 @@ void ContaPoupanca::retirada(double valor)
 
 void ContaPoupanca::print() const
 {
-  cout << "Nome: " << this->nome << endl;
+  cout << "Nome: " << this->nomeCorrentista->getNome() << endl;
   cout << "Saldo: $" << this->saldo << endl;
   cout << "Num da conta: " << this->numDaConta << endl;
   cout << "Dia da conta: " << this->aniversarioConta << endl;

@@ -10,15 +10,12 @@ class Pessoa
 
 protected:
   string nome;
-  string endereco;
   string email;
 
 public:
-  Pessoa(string, string, string);
+  Pessoa(string, string);
 
   string getNome() const { return nome; };
-
-  string getEndereco() const { return endereco; };
 
   string getEmail() const { return email; };
 

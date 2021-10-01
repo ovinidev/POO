@@ -1,12 +1,13 @@
 #include "ContaCorrenteComLimite.h"
 
-#include "Transacao.h"
+#include "../Transacao/Transacao.h"
+#include "../Pessoa/Pessoa.h"
 
 #include <iostream>
 using std::cout;
 using std::endl;
 
-ContaCorrenteComLimite::ContaCorrenteComLimite(double limite, int numDaConta, string nome, double saldo) : Conta(numDaConta, nome, saldo), limite(limite) {}
+ContaCorrenteComLimite::ContaCorrenteComLimite(double limite, int numDaConta, Pessoa &nomeCorrentista, double saldo) : Conta(numDaConta, nomeCorrentista, saldo), limite(limite) {}
 
 void ContaCorrenteComLimite::deposito(double valor)
 {
@@ -46,7 +47,7 @@ void ContaCorrenteComLimite::retirada(double valor)
 
 void ContaCorrenteComLimite::print() const
 {
-  cout << "Nome: " << this->nome << endl;
+  cout << "Nome: " << this->nomeCorrentista->getNome() << endl;
   cout << "Número da conta: " << this->numDaConta << endl;
   cout << "Saldo: $" << this->saldo << endl;
   cout << "Limite: $" << this->limite << endl;
