@@ -13,9 +13,9 @@ class ContaCorrenteComLimite : public Conta
 public:
   ContaCorrenteComLimite(double ,int ,Pessoa &,double );
 
-  virtual void deposito(double valor);
+  virtual void operator<<(double valor);
 
-  virtual void retirada(double valor);
+  virtual void operator>>(double valor);
 
   virtual void print() const;
 

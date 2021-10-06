@@ -2,6 +2,7 @@
 
 #include "../Transacao/Transacao.h"
 #include "../Pessoa/Pessoa.h"
+#include "../Erros/SaldoInsuficiente.h"
 
 #include <iostream>
 using std::cout;
@@ -9,40 +10,40 @@ using std::endl;
 
 ContaCorrenteComLimite::ContaCorrenteComLimite(double limite, int numDaConta, Pessoa &nomeCorrentista, double saldo) : Conta(numDaConta, nomeCorrentista, saldo), limite(limite) {}
 
-void ContaCorrenteComLimite::deposito(double valor)
+void ContaCorrenteComLimite::operator<<(double valor)
 {
 
   if (valor > 0)
   {
     this->saldo += valor;
   }
-  
+
   Transacao lista("22/07", valor, valor > 0 ? "credito" : "debito");
 
-  this->listaDeTransacao[this->cont] = lista;
+  this->listaDeTransacao.push_back(lista);
 
   cont++;
 }
 
-void ContaCorrenteComLimite::retirada(double valor)
+void ContaCorrenteComLimite::operator>>(double valor)
 {
-  if (saldo + limite >= valor)
+  if (this->saldo + this->limite >= valor)
   {
     this->saldo -= valor;
+
+    valor = valor * -1;
+
+    Transacao lista("22/07", valor, valor > 0 ? "credito" : "debito");
+
+    this->listaDeTransacao.push_back(lista);
+
+    cont++;
   }
   else
   {
     cout << "Limite de retirada atingido!" << endl;
     return;
   }
-
-  valor = valor * -1;
-
-  Transacao lista("22/07", valor, valor > 0 ? "credito" : "debito");
-
-  this->listaDeTransacao[this->cont] = lista;
-
-  cont++;
 }
 
 void ContaCorrenteComLimite::print() const

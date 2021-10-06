@@ -2,6 +2,8 @@
 
 #include "../Transacao/Transacao.h"
 #include "../Pessoa/Pessoa.h"
+#include "../Erros/SaldoInsuficiente.h"
+
 
 #include <iostream>
 using std::cout;
@@ -9,7 +11,7 @@ using std::endl;
 
 ContaCorrenteComum::ContaCorrenteComum(int numDaConta, Pessoa &nomeCorrentista, double saldo) : Conta(numDaConta, nomeCorrentista, saldo) {}
 
-void ContaCorrenteComum::deposito(double valor)
+void ContaCorrenteComum::operator<<(double valor)
 {
   if (valor > 0)
   {
@@ -18,12 +20,12 @@ void ContaCorrenteComum::deposito(double valor)
 
   Transacao lista("22/07", valor, valor > 0 ? "credito" : "debito");
 
-  this->listaDeTransacao[this->cont] = lista;
+  this->listaDeTransacao.push_back(lista);
 
   cont++;
 }
 
-void ContaCorrenteComum::retirada(double valor)
+void ContaCorrenteComum::operator>>(double valor)
 {
   this->saldo -= valor;
 
@@ -31,7 +33,7 @@ void ContaCorrenteComum::retirada(double valor)
 
   Transacao lista("22/07", valor, valor > 0 ? "credito" : "debito");
 
-  this->listaDeTransacao[this->cont] = lista;
+  this->listaDeTransacao.push_back(lista);
 
   cont++;
 }

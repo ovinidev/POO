@@ -2,6 +2,7 @@
 
 #include "../Transacao/Transacao.h"
 #include "../Pessoa/Pessoa.h"
+#include "../Erros/SaldoInsuficiente.h"
 
 #include <iostream>
 using std::cout;
@@ -9,7 +10,7 @@ using std::endl;
 
 ContaPoupanca::ContaPoupanca(int aniversarioConta, int numDaConta, Pessoa &nomeCorrentista, double saldo) : Conta(numDaConta, nomeCorrentista, saldo), aniversarioConta(aniversarioConta) {}
 
-void ContaPoupanca::deposito(double valor)
+void ContaPoupanca::operator<<(double valor)
 {
   if (valor > 0)
   {
@@ -18,12 +19,12 @@ void ContaPoupanca::deposito(double valor)
 
   Transacao lista("22/07", valor, valor > 0 ? "credito" : "debito");
 
-  this->listaDeTransacao[this->cont] = lista;
+  this->listaDeTransacao.push_back(lista);
 
   cont++;
 }
 
-void ContaPoupanca::retirada(double valor)
+void ContaPoupanca::operator>>(double valor)
 {
   this->saldo -= valor;
 
@@ -31,7 +32,7 @@ void ContaPoupanca::retirada(double valor)
 
   Transacao lista("22/07", valor, valor > 0 ? "credito" : "debito");
 
-  this->listaDeTransacao[this->cont] = lista;
+  this->listaDeTransacao.push_back(lista);
 
   cont++;
 }

@@ -14,8 +14,9 @@ class ContaPoupanca : public Conta
 public:
   ContaPoupanca(int, int, Pessoa &, double);
 
-  virtual void deposito(double=0);
-  virtual void retirada(double=0);
+  virtual void operator<<(double valor);
+  virtual void operator>>(double valor);
+
   virtual void print() const;
 
 private:

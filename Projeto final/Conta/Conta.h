@@ -5,6 +5,9 @@
 #include "../Pessoa/Pessoa.h"
 #include "../Transacao/Transacao.h"
 
+#include <vector>
+using std::vector;
+
 using std::string;
 
 class Conta
@@ -12,14 +15,14 @@ class Conta
 public:
   Conta(int, Pessoa &,double );
 
-  virtual void deposito(double=0) = 0;
-  virtual void retirada(double=0) = 0;
   virtual void print() const = 0;
 
+  virtual void operator<<(double) {};
+  virtual void operator>>(double){};
 
 protected:
   Pessoa *nomeCorrentista;
-  Transacao listaDeTransacao[100];
+  vector<Transacao> listaDeTransacao;
   int cont = 0;
   double saldo;
   int numDaConta;
