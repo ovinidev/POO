@@ -14,13 +14,10 @@ public:
 
   virtual string getCpf() const { return this->cpf; }
 
-  virtual string getCnpj() const { return this->cnpj; }
-
   virtual void exibirPessoa() const;
 
 protected:
   string cpf;
-  string cnpj;
 };
 
 #endif

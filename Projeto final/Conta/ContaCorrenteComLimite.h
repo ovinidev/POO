@@ -19,6 +19,8 @@ public:
 
   virtual void print() const;
 
+  virtual void transfere(double, Conta &);
+
 private:
   double limite;
 };

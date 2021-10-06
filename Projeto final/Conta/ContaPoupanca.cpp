@@ -5,6 +5,7 @@
 #include "../Erros/SaldoInsuficiente.h"
 
 #include <iostream>
+using std::cerr;
 using std::cout;
 using std::endl;
 
@@ -26,15 +27,29 @@ void ContaPoupanca::operator<<(double valor)
 
 void ContaPoupanca::operator>>(double valor)
 {
-  this->saldo -= valor;
+  try
+  {
+    if (this->saldo > valor)
+    {
+      this->saldo -= valor;
 
-  valor = valor * -1;
+      valor = valor * -1;
 
-  Transacao lista("22/07", valor, valor > 0 ? "credito" : "debito");
+      Transacao lista("22/07", valor, valor > 0 ? "credito" : "debito");
 
-  this->listaDeTransacao.push_back(lista);
+      this->listaDeTransacao.push_back(lista);
 
-  cont++;
+      cont++;
+    }
+    else
+    {
+      throw saldoInsuficiente();
+    }
+  }
+  catch (saldoInsuficiente &e)
+  {
+    cerr << e.what() << endl;
+  }
 }
 
 void ContaPoupanca::print() const
@@ -43,12 +58,28 @@ void ContaPoupanca::print() const
   cout << "Saldo: $" << this->saldo << endl;
   cout << "Num da conta: " << this->numDaConta << endl;
   cout << "Dia da conta: " << this->aniversarioConta << endl;
+  cout << endl;
 
   for (int i = 0; i < this->cont; i++)
   {
+    if (i == 30)
+      break;
     cout << "Data da transação: " << this->listaDeTransacao[i].getData() << endl;
     cout << "Valor da transação: $" << this->listaDeTransacao[i].getValor() << endl;
     cout << "Descrição: " << this->listaDeTransacao[i].getDescricao() << endl;
     cout << endl;
   }
+}
+
+void ContaPoupanca::transfere(double valor, Conta &conta)
+{
+  Transacao lista("22/07", valor, "Transferência");
+  
+  this->listaDeTransacao.push_back(lista);
+
+  cont++;
+
+  conta << valor;
+
+  this->saldo -= valor;
 }

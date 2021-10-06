@@ -2,11 +2,12 @@
 
 #include "../Transacao/Transacao.h"
 #include "../Pessoa/Pessoa.h"
-#include "../Erros/SaldoInsuficiente.h"
+#include "../Erros/LimiteExcedido.h"
 
 #include <iostream>
 using std::cout;
 using std::endl;
+using std::cerr;
 
 ContaCorrenteComLimite::ContaCorrenteComLimite(double limite, int numDaConta, Pessoa &nomeCorrentista, double saldo) : Conta(numDaConta, nomeCorrentista, saldo), limite(limite) {}
 
@@ -27,22 +28,28 @@ void ContaCorrenteComLimite::operator<<(double valor)
 
 void ContaCorrenteComLimite::operator>>(double valor)
 {
-  if (this->saldo + this->limite >= valor)
+  try
   {
-    this->saldo -= valor;
+    if (this->saldo + this->limite >= valor)
+    {
+      this->saldo -= valor;
 
-    valor = valor * -1;
+      valor = valor * -1;
 
-    Transacao lista("22/07", valor, valor > 0 ? "credito" : "debito");
+      Transacao lista("22/07", valor, valor > 0 ? "credito" : "debito");
 
-    this->listaDeTransacao.push_back(lista);
+      this->listaDeTransacao.push_back(lista);
 
-    cont++;
+      cont++;
+    }
+    else
+    {
+      throw LimiteExcedido();
+    }
   }
-  else
+  catch (LimiteExcedido &e)
   {
-    cout << "Limite de retirada atingido!" << endl;
-    return;
+    cerr << e.what() << endl;
   }
 }
 
@@ -52,12 +59,29 @@ void ContaCorrenteComLimite::print() const
   cout << "Número da conta: " << this->numDaConta << endl;
   cout << "Saldo: $" << this->saldo << endl;
   cout << "Limite: $" << this->limite << endl;
+  cout << endl;
 
   for (int i = 0; i < this->cont; i++)
   {
+    if (i == 30)
+      break;
+
     cout << "Data da transação: " << this->listaDeTransacao[i].getData() << endl;
     cout << "Valor da transação: $" << this->listaDeTransacao[i].getValor() << endl;
     cout << "Descrição: " << this->listaDeTransacao[i].getDescricao() << endl;
     cout << endl;
   }
+}
+
+void ContaCorrenteComLimite::transfere(double valor, Conta &conta)
+{
+  Transacao lista("22/07", valor, "Transferência");
+  
+  this->listaDeTransacao.push_back(lista);
+
+  cont++;
+
+  conta << valor;
+
+  this->saldo -= valor;
 }

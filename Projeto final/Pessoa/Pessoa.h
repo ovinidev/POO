@@ -19,13 +19,7 @@ public:
 
   string getEmail() const { return email; };
 
-  virtual string getCpf() const = 0;
 
-  virtual string getCnpj() const = 0;
-
-  virtual void exibirPessoa() const = 0;
-
-private:
 };
 
 #endif

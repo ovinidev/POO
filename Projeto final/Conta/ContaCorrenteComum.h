@@ -18,6 +18,8 @@ public:
   virtual void operator>>(double valor);
 
   virtual void print() const;
+
+  virtual void transfere(double, Conta &);
 };
 
 #endif

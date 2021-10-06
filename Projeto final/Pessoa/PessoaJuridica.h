@@ -12,15 +12,12 @@ class PessoaJuridica:public Pessoa
 public:
   PessoaJuridica(string, string, string);
 
-  virtual string getCpf() const { return this->cpf; }
-
   virtual string getCnpj() const { return this->cnpj; }
 
   virtual void exibirPessoa() const;
 
 private:
   string cnpj;
-  string cpf;
 };
 
 #endif

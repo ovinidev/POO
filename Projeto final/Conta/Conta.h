@@ -13,12 +13,17 @@ using std::string;
 class Conta
 {
 public:
-  Conta(int, Pessoa &,double );
+  Conta(int, Pessoa &, double);
 
   virtual void print() const = 0;
 
-  virtual void operator<<(double) {};
+  virtual void operator<<(double){};
   virtual void operator>>(double){};
+
+  virtual void transfere(double, Conta &){};
+
+  virtual int getNumeroDaConta() { return this->numDaConta; }
+  virtual Pessoa getNomeCorrentista() { return *this->nomeCorrentista; }
 
 protected:
   Pessoa *nomeCorrentista;
@@ -26,7 +31,6 @@ protected:
   int cont = 0;
   double saldo;
   int numDaConta;
-
 };
 
 #endif

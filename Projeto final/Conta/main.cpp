@@ -19,10 +19,12 @@ int main()
   ContaCorrenteComum c1(123, p1, 20.00);
   ContaCorrenteComLimite c2(250.00, 2500, p2, 200.00);
 
-  c1 >> 500;
   c2 >> 500;
 
+  c2.transfere(20.0, c1);
+
   c2.print();
+  c1.print();
 
 
   return 0;
