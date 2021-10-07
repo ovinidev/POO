@@ -42,6 +42,8 @@ int main()
 
   b.exibirContas();
   b.exibirCorrentista(p1.getNome());
+;
+  b.consultar(2200);
 
 
   return 0;

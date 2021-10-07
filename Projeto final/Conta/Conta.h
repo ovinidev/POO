@@ -14,6 +14,7 @@ class Conta
 {
 public:
   Conta(int, Pessoa &, double);
+  Conta();
 
   virtual void print() const;
 

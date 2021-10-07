@@ -19,13 +19,17 @@ public:
 
   void cadastrar(Conta &conta);
   void remover(int);
-  // void consultar(int);
-  // void atualizar(Conta &, int);
+  void consultar(int);
 
   // void cadastraCorrentista(Pessoa &);
 
   void exibirCorrentista(string);
   void exibirContas();
+
+  // bool salvaDados();
+  // bool salvaPessoas();
+  // bool lerDados();
+  // bool lerContas();
 
   // Pessoa &buscaCorrentista(string);
   // Conta &buscaConta(int);

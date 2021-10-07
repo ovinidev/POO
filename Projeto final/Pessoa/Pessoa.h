@@ -24,7 +24,7 @@ public:
   virtual long int getCpf() const { return cpf; };
 
   virtual long int getCnpj() const { return cnpj; };
-  
+
 
 };
 

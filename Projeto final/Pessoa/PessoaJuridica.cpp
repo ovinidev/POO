@@ -10,6 +10,7 @@ PessoaJuridica::PessoaJuridica(string nome, string email, long int cnpj) : Pesso
   this->cnpj = cnpj;
 }
 
+
 void PessoaJuridica::exibirPessoa() const{
   cout << "Nome: " << this->getNome() << endl;
   cout << "Email: " << this->getEmail() << endl;

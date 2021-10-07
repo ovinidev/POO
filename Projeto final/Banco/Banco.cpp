@@ -43,33 +43,49 @@ void Banco::remover(int numero)
   }
 }
 
-void Banco::exibirContas()
+void Banco::consultar(int numero)
 {
   for (int i = 0; i < this->quantidadeContas; i++)
   {
-    cout << "Bem vindo a sua conta!" << endl;
-    cout << "Nome: " << this->listaContas[i].getNomeCorrentista().getNome() << endl;
-    cout << "Saldo: R$" << this->listaContas[i].getSaldo() << endl;
-    cout << "Numbero da Conta: " << this->listaContas[i].getNumeroDaConta() << endl;
-    cout << endl;
-  }
-}
 
-void Banco::exibirCorrentista(string nome)
-{
-  for (int i = 0; i < this->quantidadeCorrentistas; i++)
-  {
-    if (nome == listaContas[i].getNomeCorrentista().getNome())
+    if (this->listaContas[i].getNumeroDaConta() == numero)
     {
-      cout << "Correntistas do Banco: " << endl;
-      cout << "Nome: " << this->listaCorrentistas[i].getNome() << endl;
-      cout << "Email: " << this->listaCorrentistas[i].getEmail() << endl;
+      cout << "Olá " << this->listaContas[i].getNomeCorrentista().getNome() << ", aqui estão os dados da sua conta: " << endl;
+      cout << "Nome: " << this->listaContas[i].getNomeCorrentista().getNome() << endl;
+      cout << "Numero: " << this->listaContas[i].getNumeroDaConta() << endl;
+      cout << "Email: " << this->listaContas[i].getNomeCorrentista().getEmail() << endl;
       cout << endl;
-      break;
     }
   }
 }
 
-Banco::~Banco()
-{
-}
+  void Banco::exibirContas()
+  {
+    for (int i = 0; i < this->quantidadeContas; i++)
+    {
+      cout << "Bem vindo a sua conta!" << endl;
+      cout << "Nome: " << this->listaContas[i].getNomeCorrentista().getNome() << endl;
+      cout << "Saldo: R$" << this->listaContas[i].getSaldo() << endl;
+      cout << "Numero da Conta: " << this->listaContas[i].getNumeroDaConta() << endl;
+      cout << endl;
+    }
+  }
+
+  void Banco::exibirCorrentista(string nome)
+  {
+    for (int i = 0; i < this->quantidadeCorrentistas; i++)
+    {
+      if (nome == listaContas[i].getNomeCorrentista().getNome())
+      {
+        cout << "Correntistas do Banco: " << endl;
+        cout << "Nome: " << this->listaCorrentistas[i].getNome() << endl;
+        cout << "Email: " << this->listaCorrentistas[i].getEmail() << endl;
+        cout << endl;
+        break;
+      }
+    }
+  }
+
+  Banco::~Banco()
+  {
+  }
