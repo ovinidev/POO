@@ -26,13 +26,17 @@ void Banco::cadastrar(Conta &conta)
 {
   this->listaContas.push_back(conta);
   this->quantidadeContas++;
+
+  this->listaCorrentistas.push_back(conta.getNomeCorrentista());
+  this->quantidadeCorrentistas++;
 };
 
 void Banco::remover(int numero)
 {
   for (int i = 0; i < this->quantidadeContas; i++)
   {
-    if (numero == this->listaContas[i].getNumeroDaConta()){
+    if (numero == this->listaContas[i].getNumeroDaConta())
+    {
       this->listaContas.erase(listaContas.begin() + i);
       this->quantidadeContas--;
     }
@@ -48,6 +52,21 @@ void Banco::exibirContas()
     cout << "Saldo: R$" << this->listaContas[i].getSaldo() << endl;
     cout << "Numbero da Conta: " << this->listaContas[i].getNumeroDaConta() << endl;
     cout << endl;
+  }
+}
+
+void Banco::exibirCorrentista(string nome)
+{
+  for (int i = 0; i < this->quantidadeCorrentistas; i++)
+  {
+    if (nome == listaContas[i].getNomeCorrentista().getNome())
+    {
+      cout << "Correntistas do Banco: " << endl;
+      cout << "Nome: " << this->listaCorrentistas[i].getNome() << endl;
+      cout << "Email: " << this->listaCorrentistas[i].getEmail() << endl;
+      cout << endl;
+      break;
+    }
   }
 }
 

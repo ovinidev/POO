@@ -24,7 +24,7 @@ public:
 
   // void cadastraCorrentista(Pessoa &);
 
-  // void listaCorrentista(Pessoa &);
+  void exibirCorrentista(string);
   void exibirContas();
 
   // Pessoa &buscaCorrentista(string);

@@ -6,8 +6,7 @@ using std::string;
 #include "PessoaJuridica.h"
 #include "Pessoa.h"
 
-PessoaJuridica::PessoaJuridica(string nome, string email, 
-long int cnpj) : Pessoa( nome, email){
+PessoaJuridica::PessoaJuridica(string nome, string email, long int cnpj) : Pessoa( nome, email){
   this->cnpj = cnpj;
 }
 
