@@ -12,7 +12,7 @@ using std::endl;
 class ContaPoupanca : public Conta
 {
 public:
-  ContaPoupanca(int, int, Pessoa &, double);
+  ContaPoupanca(Pessoa &, int, double, int);
 
   virtual void operator<<(double valor);
   virtual void operator>>(double valor);

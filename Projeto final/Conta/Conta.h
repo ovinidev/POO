@@ -15,7 +15,7 @@ class Conta
 public:
   Conta(int, Pessoa &, double);
 
-  virtual void print() const = 0;
+  virtual void print() const;
 
   virtual void operator<<(double){};
   virtual void operator>>(double){};
@@ -24,6 +24,7 @@ public:
 
   virtual int getNumeroDaConta() { return this->numDaConta; }
   virtual Pessoa getNomeCorrentista() { return *this->nomeCorrentista; }
+  virtual double getSaldo() { return this->saldo; }
 
 protected:
   Pessoa *nomeCorrentista;

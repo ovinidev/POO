@@ -10,14 +10,11 @@ class PessoaFisica : public Pessoa
 {
 public:
   
-  PessoaFisica(string, string, string);
-
-  virtual string getCpf() const { return this->cpf; }
+  PessoaFisica(string, string, long int);
 
   virtual void exibirPessoa() const;
 
 protected:
-  string cpf;
 };
 
 #endif

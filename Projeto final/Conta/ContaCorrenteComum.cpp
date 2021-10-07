@@ -9,7 +9,7 @@ using std::cerr;
 using std::cout;
 using std::endl;
 
-ContaCorrenteComum::ContaCorrenteComum(int numDaConta, Pessoa &nomeCorrentista, double saldo) : Conta(numDaConta, nomeCorrentista, saldo) {}
+ContaCorrenteComum::ContaCorrenteComum(Pessoa &nomeCorrentista, int numDaConta, double saldo) : Conta(numDaConta, nomeCorrentista, saldo) {}
 
 void ContaCorrenteComum::operator<<(double valor)
 {

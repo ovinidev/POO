@@ -11,14 +11,20 @@ class Pessoa
 protected:
   string nome;
   string email;
+  long int cpf;
+  long int cnpj;
 
 public:
   Pessoa(string, string);
 
-  string getNome() const { return nome; };
+  virtual string getNome() const { return nome; };
 
-  string getEmail() const { return email; };
+  virtual string getEmail() const { return email; };
 
+  virtual long int getCpf() const { return cpf; };
+
+  virtual long int getCnpj() const { return cnpj; };
+  
 
 };
 

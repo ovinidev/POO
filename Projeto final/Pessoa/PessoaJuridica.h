@@ -10,14 +10,11 @@ class PessoaJuridica:public Pessoa
 {
 
 public:
-  PessoaJuridica(string, string, string);
-
-  virtual string getCnpj() const { return this->cnpj; }
+  PessoaJuridica(string, string, long int);
 
   virtual void exibirPessoa() const;
 
 private:
-  string cnpj;
 };
 
 #endif

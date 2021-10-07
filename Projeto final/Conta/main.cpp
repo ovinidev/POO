@@ -7,24 +7,40 @@
 #include "../Pessoa/Pessoa.h"
 #include "../Pessoa/PessoaFisica.h"
 #include "../Pessoa/PessoaJuridica.h"
+#include "../Banco/Banco.h"
 
 #include <list>
 using std::list;
 
 int main()
 {
-  PessoaFisica p1("Vini", "vini@dataside.com" ,"232323");
-  PessoaJuridica p2("Joao", "jv@dataside.com" ,"315323");
+  PessoaFisica p1("Vini", "vini@dataside.com" ,232323);
+  PessoaJuridica p2("Joao", "jv@dataside.com" ,315323);
+  PessoaJuridica p3("Jorge", "jv@dataside.com" ,315323);
+  PessoaJuridica p4("Thales", "jv@dataside.com" ,315323);
+  PessoaJuridica p5("Renatha", "jv@dataside.com" ,315323);
 
-  ContaCorrenteComum c1(123, p1, 20.00);
-  ContaCorrenteComLimite c2(250.00, 2500, p2, 200.00);
+  ContaCorrenteComum c1(p1, 123, 20.00);
+  ContaCorrenteComLimite c2(p2, 2500, 500.00, 200.00);
+  ContaCorrenteComLimite c3(p3, 2000, 500.00, 200.00);
+  ContaCorrenteComLimite c4(p4, 2100, 500.00, 200.00);
+  ContaCorrenteComLimite c5(p5, 2200, 500.00, 200.00);
 
-  c2 >> 500;
+  Banco b("Banco", "banco@dataside.com", 5001);
 
-  c2.transfere(20.0, c1);
+  b.cadastrar(c1);
+  b.cadastrar(c2);
+  b.cadastrar(c3);
+  b.cadastrar(c4);
+  b.cadastrar(c5);
 
-  c2.print();
-  c1.print();
+  b.exibirContas();
+
+  b.remover(2000);
+
+  cout << "=================" << endl;
+
+  b.exibirContas();
 
 
   return 0;

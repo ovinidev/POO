@@ -6,7 +6,7 @@ using std::string;
 #include "PessoaFisica.h"
 #include "Pessoa.h"
 
-PessoaFisica::PessoaFisica(string nome, string email, string cpf) : Pessoa( nome, email){
+PessoaFisica::PessoaFisica(string nome, string email, long int cpf) : Pessoa( nome, email){
   this->cpf = cpf;
 }
 

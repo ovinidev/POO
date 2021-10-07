@@ -4,6 +4,7 @@
 #include "Conta.h"
 #include "../Transacao/Transacao.h"
 #include "../Pessoa/Pessoa.h"
+
 #include <iostream>
 using std::cout;
 using std::endl;
@@ -11,7 +12,7 @@ using std::endl;
 class ContaCorrenteComLimite : public Conta
 {
 public:
-  ContaCorrenteComLimite(double ,int ,Pessoa &,double );
+  ContaCorrenteComLimite(Pessoa &, int, double, double);
 
   virtual void operator<<(double valor);
 
