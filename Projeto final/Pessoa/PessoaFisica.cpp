@@ -7,12 +7,12 @@ using std::string;
 #include "Pessoa.h"
 
 PessoaFisica::PessoaFisica(string nome, string email, long int cpf) : Pessoa( nome, email){
-  this->cpf = cpf;
+  this->cpfOuCnpj = cpf;
 }
 
 void PessoaFisica::exibirPessoa() const{
   cout << "Nome: " << this->getNome() << endl;
   cout << "Email: " << this->getEmail() << endl;
-  cout << "CPF: " << this->getCpf() << endl;
+  cout << "CPF: " << this->getCpfOuCnpj() << endl;
   cout << endl;
 }

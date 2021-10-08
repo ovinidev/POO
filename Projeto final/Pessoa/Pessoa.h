@@ -11,8 +11,7 @@ class Pessoa
 protected:
   string nome;
   string email;
-  long int cpf;
-  long int cnpj;
+  long int cpfOuCnpj;
 
 public:
   Pessoa(string, string);
@@ -21,9 +20,7 @@ public:
 
   virtual string getEmail() const { return email; };
 
-  virtual long int getCpf() const { return cpf; };
-
-  virtual long int getCnpj() const { return cnpj; };
+  virtual long int getCpfOuCnpj() const { return cpfOuCnpj; };
 
 
 };

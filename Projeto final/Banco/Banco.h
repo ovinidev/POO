@@ -18,13 +18,14 @@ public:
   ~Banco();
 
   void cadastrar(Conta &conta);
+  void cadastrarCorrentista(Pessoa &pessoa);
   void remover(int);
   void consultar(int);
 
-  // void cadastraCorrentista(Pessoa &);
-
   void exibirCorrentista(string);
   void exibirContas();
+
+  Pessoa& getCorrentista(string);
 
   // bool salvaDados();
   // bool salvaPessoas();

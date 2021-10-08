@@ -7,13 +7,13 @@ using std::string;
 #include "Pessoa.h"
 
 PessoaJuridica::PessoaJuridica(string nome, string email, long int cnpj) : Pessoa( nome, email){
-  this->cnpj = cnpj;
+  this->cpfOuCnpj = cnpj;
 }
 
 
 void PessoaJuridica::exibirPessoa() const{
   cout << "Nome: " << this->getNome() << endl;
   cout << "Email: " << this->getEmail() << endl;
-  cout << "CNPJ: " << this->getCnpj() << endl;
+  cout << "CNPJ: " << this->getCpfOuCnpj() << endl;
   cout << endl;
 }
