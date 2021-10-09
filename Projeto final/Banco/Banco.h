@@ -17,8 +17,8 @@ public:
   Banco(string, string, long int);
   ~Banco();
 
-  void cadastrar(Conta &conta);
-  void cadastrarCorrentista(Pessoa &pessoa);
+  void cadastrar(Conta &);
+  void cadastrarCorrentista(Pessoa &);
   void remover(int);
   void consultar(int);
 

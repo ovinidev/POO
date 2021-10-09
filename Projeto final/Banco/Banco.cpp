@@ -20,6 +20,7 @@ Banco::Banco(string nome, string email, long int cnpj) : PessoaJuridica(nome, em
   this->nome = nome;
   this->email = email;
   this->cpfOuCnpj = cnpj;
+
 };
 
 void Banco::cadastrar(Conta &conta)
@@ -54,6 +55,7 @@ void Banco::remover(int numero)
     {
       this->listaContas.erase(listaContas.begin() + i);
       this->quantidadeContas--;
+      cout << "Conta removida com sucesso!" << endl;
     }
   }
 }
@@ -69,7 +71,11 @@ void Banco::consultar(int numero)
       cout << "Nome: " << this->listaContas[i].getNomeCorrentista().getNome() << endl;
       cout << "Numero: " << this->listaContas[i].getNumeroDaConta() << endl;
       cout << "Email: " << this->listaContas[i].getNomeCorrentista().getEmail() << endl;
-      cout << endl;
+      cout << "Saldo: $" << this->listaContas[i].getSaldo() << endl;
+    }
+    else if (this->listaContas[i].getNumeroDaConta() != numero)
+    {
+      cout << "Conta não encontrada!" << endl;
     }
   }
 }
