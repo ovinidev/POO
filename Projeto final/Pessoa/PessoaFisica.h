@@ -9,6 +9,8 @@ using std::string;
 class PessoaFisica : public Pessoa
 {
 public:
+
+  PessoaFisica();
   
   PessoaFisica(string, string, long int);
 

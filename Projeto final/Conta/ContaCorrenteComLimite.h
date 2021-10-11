@@ -23,7 +23,6 @@ public:
   virtual void transfere(double, Conta &);
 
 private:
-  double limite;
 };
 
 #endif

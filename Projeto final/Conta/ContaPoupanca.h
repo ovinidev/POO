@@ -22,7 +22,6 @@ public:
   virtual void transfere(double, Conta &);
 
 private:
-  int aniversarioConta;
 };
 
 #endif

@@ -25,15 +25,17 @@ public:
   void exibirCorrentista(string);
   void exibirContas();
 
+  bool salvaDados();
+  bool salvaPessoas();
+  bool lerDados();
+  bool lerContas();
+
   Pessoa& getCorrentista(string);
+  Conta& getConta(int);
 
-  // bool salvaDados();
-  // bool salvaPessoas();
-  // bool lerDados();
-  // bool lerContas();
+  void visaoDoGerente(Banco &bank);
 
-  // Pessoa &buscaCorrentista(string);
-  // Conta &buscaConta(int);
+  void visaoDoCorrentista(Banco &bank, Conta &conta);
 
 protected:
   vector<Pessoa> listaCorrentistas;

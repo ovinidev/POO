@@ -10,6 +10,7 @@ class PessoaJuridica:public Pessoa
 {
 
 public:
+  PessoaJuridica();
   PessoaJuridica(string, string, long int);
 
   virtual void exibirPessoa() const;

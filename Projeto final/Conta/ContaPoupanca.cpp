@@ -9,7 +9,10 @@ using std::cerr;
 using std::cout;
 using std::endl;
 
-ContaPoupanca::ContaPoupanca(Pessoa &nomeCorrentista, int numDaConta, double saldo, int aniversarioConta) : Conta(numDaConta, nomeCorrentista, saldo), aniversarioConta(aniversarioConta) {}
+ContaPoupanca::ContaPoupanca(Pessoa &nomeCorrentista, int numDaConta, double saldo, int aniversarioConta) : Conta(numDaConta, nomeCorrentista, saldo)
+{
+  this->aniversarioConta = aniversarioConta;
+}
 
 void ContaPoupanca::operator<<(double valor)
 {
@@ -74,7 +77,7 @@ void ContaPoupanca::print() const
 void ContaPoupanca::transfere(double valor, Conta &conta)
 {
   Transacao lista("22/07", valor, "Transferência");
-  
+
   this->listaDeTransacao.push_back(lista);
 
   cont++;

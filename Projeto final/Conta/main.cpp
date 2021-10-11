@@ -15,198 +15,12 @@ using std::list;
 using std::cin;
 using std::cout;
 
-void visaoDoGerente(Banco &bank)
-{
-  bool acabou = false;
-  int operacao = 0;
-
-  while (acabou == false)
-  {
-
-    cout << endl;
-    cout << "Olá, bem vindo a função Gerente!" << endl;
-    cout << endl;
-    cout << "Aqui você pode: " << endl;
-    cout << "1 - Abrir uma conta nova" << endl;
-    cout << "2 - Consultar uma conta já existente" << endl;
-    cout << "3 - Fechar conta" << endl;
-    cout << "-1 - encerrar operação" << endl;
-
-    cin >> operacao;
-    cout << endl;
-
-    if (operacao == 1)
-    {
-      long int numeroDaConta;
-      double saldo;
-      long int cpfOuCnpj;
-      string email;
-      int aniversario;
-      string nome;
-      double limite;
-
-      int option = 0;
-      int tipoPessoa = 0;
-
-      cout << "Você é: " << endl;
-      cout << "1 - Pessoa Física" << endl;
-      cout << "2 - Pessoa Jurídica" << endl;
-      cin >> tipoPessoa;
-      cout << endl;
-
-      if (tipoPessoa == 1)
-      {
-        cout << "Digite seu nome: " << endl;
-        cin >> nome;
-        cout << "Digite seu email: " << endl;
-        cin >> email;
-        cout << "Digite seu CPF: " << endl;
-        cin >> cpfOuCnpj;
-
-        PessoaFisica novaConta(nome, email, cpfOuCnpj);
-        bank.cadastrarCorrentista(novaConta);
-      }
-      else if (tipoPessoa == 2)
-      {
-        cout << "Digite seu nome: " << endl;
-        cin >> nome;
-        cout << "Digite seu email: " << endl;
-        cin >> email;
-        cout << "Digite seu CNPJ: " << endl;
-        cin >> cpfOuCnpj;
-        PessoaJuridica novaConta(nome, email, cpfOuCnpj);
-        bank.cadastrarCorrentista(novaConta);
-      }
-
-      cout << endl;
-      cout << "Por favor selecione o tipo de conta que você deseja: " << endl;
-      cout << "1 - CONTA POUPANÇA" << endl;
-      cout << "2 - CONTA CORRENTE COMUM" << endl;
-      cout << "3 - CONTA CORRENTE COM LIMITE" << endl;
-
-      cin >> option;
-      cout << endl;
-
-      if (option == 1)
-      {
-        cout << "Digite o número para a conta: " << endl;
-        cin >> numeroDaConta;
-        cout << "Digite o aniversário da conta: " << endl;
-        cin >> aniversario;
-        cout << "Digite o saldo inical para a conta: " << endl;
-        cin >> saldo;
-        ContaPoupanca c1(bank.getCorrentista(bank.getNome()), numeroDaConta, saldo, aniversario);
-        bank.cadastrar(c1);
-      }
-      else if (option == 2)
-      {
-        cout << "Digite o número para a conta: " << endl;
-        cin >> numeroDaConta;
-        cout << "Digite o saldo inical para a conta: " << endl;
-        cin >> saldo;
-        ContaCorrenteComum c1(bank.getCorrentista(bank.getNome()), numeroDaConta, saldo);
-        bank.cadastrar(c1);
-      }
-      else if (option == 3)
-      {
-        cout << "Digite o número para a conta: " << endl;
-        cin >> numeroDaConta;
-        cout << "Digite o saldo inical para a conta: " << endl;
-        cin >> saldo;
-        cout << "Digite o saldo limite: " << endl;
-        cin >> limite;
-        ContaCorrenteComLimite c1(bank.getCorrentista(bank.getNome()), numeroDaConta, saldo, limite);
-        bank.cadastrar(c1);
-      }
-    }
-    else if (operacao == 2)
-    {
-      int numero;
-      cout << "Digite o numero da conta para busca-la: " << endl;
-      cin >> numero;
-      cout << endl;
-
-      bank.consultar(numero);
-    }
-    else if (operacao == 3)
-    {
-      int numero;
-      cout << "Digite o numero da conta para busca-la: " << endl;
-      cin >> numero;
-      cout << endl;
-
-      bank.remover(numero);
-    }
-    else if (operacao == -1)
-    {
-      acabou = true;
-    }
-  }
-}
-
-void visaoDoCorrentista(Banco &bank, Conta &conta)
-{
-  bool acabou = false;
-  int operacao = 0;
-
-  while (acabou == false)
-  {
-    cout << endl;
-    cout << "Olá, bem vindo a função Correntista!" << endl;
-    cout << endl;
-    cout << "Aqui você pode: " << endl;
-    cout << "1 - Fazer um depósito" << endl;
-    cout << "2 - Fazer um extrato" << endl;
-    cout << "3 - Consultar seu saldo" << endl;
-    cout << "4 - Consultar seu extrato" << endl;
-    cout << "-1 - encerrar operação" << endl;
-
-    cin >> operacao;
-
-    if (operacao == 1)
-    {
-      double valor;
-      cout << "Digite o valor:" << endl;
-      cin >> valor;
-
-      conta << valor;
-    }
-    else if (operacao == 2)
-    {
-      double valor;
-      cout << "Digite o valor:" << endl;
-      cin >> valor;
-
-      conta >> valor;
-    }
-    else if (operacao == 3)
-    {
-      int numero;
-      cout << "Digite o número da conta: " << endl;
-      cin >> numero;
-
-      cout << "Seu saldo é de: $" << conta.getSaldo() << endl;
-    }
-    else if (operacao == 4)
-    {
-      cout << "Consultando extratos: " << endl;
-      conta.print();
-    }
-    else if (operacao == -1)
-    {
-      acabou = true;
-    }
-  }
-}
 
 int main()
 {
   int option = 0;
 
-  PessoaFisica p1("Vini", "vini@dataside.com", 232323);
-  ContaCorrenteComum c1(p1, 123, 20.00);
-
-  Banco b("Banco", "banco@dataside.com", 5001);
+  Banco bank("Banco", "banco@dataside.com", 5001);
 
   cout << "Bem vindo ao Banco viniBank!" << endl;
   cout << "Você deseja entrar como gerente ou correntista?" << endl;
@@ -217,12 +31,15 @@ int main()
 
   if (option == 1)
   {
-    visaoDoGerente(b);
+    bank.visaoDoGerente(bank);
   }
   else if (option == 2)
   {
-    visaoDoGerente(b);
-    visaoDoCorrentista(b, c1);
+    int numero;
+    cout << "Por favor, digite o numero da conta: " << endl;
+    cin >> numero;
+
+    bank.visaoDoCorrentista(bank, bank.getConta(numero));
   }
   else
   {

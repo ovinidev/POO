@@ -6,6 +6,13 @@ using std::string;
 #include "PessoaFisica.h"
 #include "Pessoa.h"
 
+PessoaFisica::PessoaFisica()
+{
+  this->nome = "";
+  this->email = "";
+  this->cpfOuCnpj = 0;
+}
+
 PessoaFisica::PessoaFisica(string nome, string email, long int cpf) : Pessoa( nome, email){
   this->cpfOuCnpj = cpf;
 }

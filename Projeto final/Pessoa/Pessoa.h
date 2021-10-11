@@ -14,6 +14,8 @@ protected:
   long int cpfOuCnpj;
 
 public:
+  Pessoa() {};
+
   Pessoa(string, string);
 
   virtual string getNome() const { return nome; };
