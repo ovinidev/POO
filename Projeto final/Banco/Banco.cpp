@@ -29,6 +29,7 @@ void Banco::cadastrar(Conta &conta)
 {
   this->listaContas.push_back(conta);
   this->quantidadeContas++;
+
 };
 
 void Banco::cadastrarCorrentista(Pessoa &pessoa)
