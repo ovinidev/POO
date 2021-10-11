@@ -151,7 +151,7 @@ bool Banco::salvaDados()
 
   for (int i = 0; i < this->quantidadeContas; i++)
   {
-    fout << listaContas[i].getNumeroDaConta() << ' ' << listaContas[i].getSaldo() << " " << listaContas[i].getLimite() << " " << listaContas[i].getAniversario() << endl;
+    fout << listaContas[i].getNumeroDaConta() << ' ' << listaContas[i].getSaldo() << " " << listaContas[i].getLimite() << " " << listaContas[i].getAniversario() << " " << listaContas[i].getNomeCorrentista().getNome() << endl;
   }
 
   fout.close();
@@ -220,7 +220,7 @@ bool Banco::lerContas()
   }
   account_input c;
 
-  while (fin >> c.num >> c.saldo >> c.limite >> c.niver)
+  while (fin >> c.num >> c.saldo >> c.limite >> c.niver >> c.nome)
   {
 
     if (c.niver != 0)
