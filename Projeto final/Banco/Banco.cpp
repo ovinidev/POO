@@ -123,35 +123,35 @@ Conta& Banco::getConta(int numero)
 
 Banco::~Banco()
 {
-  this->salvaDados();
+  salvaDados();
 }
 
-struct Conta_entrada
+struct account_input
 {
-  string nome;
-  int num;
-  int niver;
   double saldo;
   double limite;
+  int num;
+  int niver;
+  string nome;
 };
 
-struct correntistas_entrada
+struct c_input
 {
   string nome;
-  long int cpfOrCNPJ;
   string email;
+  long int cpfOuCnpj;
 };
 
 bool Banco::salvaDados()
 {
-  ofstream fout("contas.dat", std::ios::out);
+  ofstream fout("dados.dat", std::ios::out);
 
   if (!fout)
     return false;
 
   for (int i = 0; i < this->quantidadeContas; i++)
   {
-    fout << listaContas[i].getNomeCorrentista().getNome() << ' ' << listaContas[i].getNumeroDaConta() << ' ' << listaContas[i].getSaldo() << " " << listaContas[i].getLimite() << " " << listaContas[i].getAniversario() << ' ' << endl;
+    fout << listaContas[i].getNumeroDaConta() << ' ' << listaContas[i].getSaldo() << " " << listaContas[i].getLimite() << " " << listaContas[i].getAniversario() << endl;
   }
 
   fout.close();
@@ -163,14 +163,14 @@ bool Banco::salvaDados()
 
 bool Banco::salvaPessoas()
 {
-  ofstream fout("correntistas.dat", std::ios::out);
+  ofstream fout("pessoas.dat", std::ios::out);
 
   if (!fout)
     return false;
 
   for (int i = 0; i < quantidadeCorrentistas; i++)
   {
-    fout << listaCorrentistas[i].getNome() << ' ' << listaCorrentistas[i].getEmail() << ' ' << listaCorrentistas[i].getCpfOuCnpj() << ' ' << endl;
+    fout << listaCorrentistas[i].getNome() << ' ' << listaCorrentistas[i].getEmail() << ' ' << listaCorrentistas[i].getCpfOuCnpj() << endl;
   }
 
   fout.close();
@@ -180,24 +180,24 @@ bool Banco::salvaPessoas()
 
 bool Banco::lerDados()
 {
-  ifstream fin("correntistas.dat", std::ios::in);
+  ifstream fin("pessoas.dat", std::ios::in);
 
   if (!fin)
     return false;
 
-  correntistas_entrada c;
+  c_input c;
 
-  while (fin >> c.nome >> c.email >> c.cpfOrCNPJ)
+  while (fin >> c.nome >> c.email >> c.cpfOuCnpj)
   {
     if (c.email != "x")
     {
-      PessoaJuridica novaPessoa(c.nome, c.email, c.cpfOrCNPJ);
+      PessoaJuridica novaPessoa(c.nome, c.email, c.cpfOuCnpj);
       this->listaCorrentistas.push_back(novaPessoa);
       this->quantidadeCorrentistas++;
     }
     else
     {
-      PessoaFisica novaPessoa(c.nome, c.email, c.cpfOrCNPJ);
+      PessoaFisica novaPessoa(c.nome, c.email, c.cpfOuCnpj);
       this->listaCorrentistas.push_back(novaPessoa);
       this->quantidadeCorrentistas++;
     }
@@ -212,30 +212,30 @@ bool Banco::lerDados()
 
 bool Banco::lerContas()
 {
-  ifstream fin("contas.dat", std::ios::in);
+  ifstream fin("dados.dat", std::ios::in);
 
   if (!fin)
   {
     return false;
   }
-  Conta_entrada c;
+  account_input c;
 
-  while (fin >> c.nome >> c.num >> c.saldo >> c.niver >> c.limite)
+  while (fin >> c.num >> c.saldo >> c.limite >> c.niver)
   {
 
     if (c.niver != 0)
     {
-      ContaPoupanca novaConta(this->getCorrentista(c.nome), c.num, c.saldo, c.niver);
+      ContaPoupanca novaConta(c.num, this->getCorrentista(c.nome), c.saldo, c.niver);
       this->cadastrar(novaConta);
     }
     else if (c.limite != 0)
     {
-      ContaCorrenteComLimite novaConta(this->getCorrentista(c.nome), c.num, c.saldo, c.limite);
+      ContaCorrenteComLimite novaConta(c.num, this->getCorrentista(c.nome), c.saldo, c.limite);
       this->cadastrar(novaConta);
     }
     else
     {
-      ContaCorrenteComum novaConta(this->getCorrentista(c.nome), c.num, c.saldo);
+      ContaCorrenteComum novaConta(c.num, this->getCorrentista(c.nome), c.saldo);
       this->cadastrar(novaConta);
     }
   }
@@ -323,7 +323,7 @@ void Banco::visaoDoGerente(Banco &bank)
         cin >> aniversario;
         cout << "Digite o saldo inical para a conta: " << endl;
         cin >> saldo;
-        ContaPoupanca c1(bank.getCorrentista(bank.getNome()), numeroDaConta, saldo, aniversario);
+        ContaPoupanca c1(numeroDaConta, bank.getCorrentista(bank.getNome()), saldo, aniversario);
         bank.cadastrar(c1);
       }
       else if (option == 2)
@@ -332,7 +332,7 @@ void Banco::visaoDoGerente(Banco &bank)
         cin >> numeroDaConta;
         cout << "Digite o saldo inical para a conta: " << endl;
         cin >> saldo;
-        ContaCorrenteComum c1(bank.getCorrentista(bank.getNome()), numeroDaConta, saldo);
+        ContaCorrenteComum c1(numeroDaConta, bank.getCorrentista(bank.getNome()), saldo);
         bank.cadastrar(c1);
       }
       else if (option == 3)
@@ -343,7 +343,7 @@ void Banco::visaoDoGerente(Banco &bank)
         cin >> saldo;
         cout << "Digite o saldo limite: " << endl;
         cin >> limite;
-        ContaCorrenteComLimite c1(bank.getCorrentista(bank.getNome()), numeroDaConta, saldo, limite);
+        ContaCorrenteComLimite c1(numeroDaConta, bank.getCorrentista(bank.getNome()), saldo, limite);
         bank.cadastrar(c1);
       }
     }
@@ -398,7 +398,6 @@ void Banco::visaoDoCorrentista(Banco &bank, Conta &conta)
       cin >> valor;
 
       conta << valor;
-      conta.print();
 
     }
     else if (operacao == 2)
@@ -408,7 +407,6 @@ void Banco::visaoDoCorrentista(Banco &bank, Conta &conta)
       cin >> valor;
 
       conta >> valor;
-      conta.print();
     }
     else if (operacao == 3)
     {

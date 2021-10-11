@@ -12,7 +12,7 @@ using std::endl;
 class ContaCorrenteComum : public Conta
 {
 public:
-  ContaCorrenteComum(Pessoa &, int, double);
+  ContaCorrenteComum(int, Pessoa &, double);
 
   virtual void operator<<(double valor);
   virtual void operator>>(double valor);

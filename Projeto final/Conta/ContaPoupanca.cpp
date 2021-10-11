@@ -9,7 +9,7 @@ using std::cerr;
 using std::cout;
 using std::endl;
 
-ContaPoupanca::ContaPoupanca(Pessoa &nomeCorrentista, int numDaConta, double saldo, int aniversarioConta) : Conta(numDaConta, nomeCorrentista, saldo)
+ContaPoupanca::ContaPoupanca(int numDaConta, Pessoa &nomeCorrentista, double saldo, int aniversarioConta) : Conta(numDaConta, nomeCorrentista, saldo)
 {
   this->aniversarioConta = aniversarioConta;
 }

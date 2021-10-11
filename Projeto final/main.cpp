@@ -1,13 +1,13 @@
 #include <iostream>
 
-#include "Conta.h"
-#include "ContaPoupanca.h"
-#include "ContaCorrenteComLimite.h"
-#include "ContaCorrenteComum.h"
-#include "../Pessoa/Pessoa.h"
-#include "../Pessoa/PessoaFisica.h"
-#include "../Pessoa/PessoaJuridica.h"
-#include "../Banco/Banco.h"
+#include "./Banco/Banco.h"
+#include "./Conta/ContaPoupanca.h"
+#include "./Conta/ContaCorrenteComLimite.h"
+#include "./Conta/ContaCorrenteComum.h"
+#include "./Pessoa/Pessoa.h"
+#include "./Pessoa/PessoaFisica.h"
+#include "./Pessoa/PessoaJuridica.h"
+#include "./Banco/Banco.h"
 
 #include <list>
 using std::list;

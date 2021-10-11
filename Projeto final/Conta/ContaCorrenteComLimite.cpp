@@ -9,7 +9,7 @@ using std::cout;
 using std::endl;
 using std::cerr;
 
-ContaCorrenteComLimite::ContaCorrenteComLimite(Pessoa &nomeCorrentista, int numDaConta, double saldo, double limite ) : Conta(numDaConta, nomeCorrentista, saldo){
+ContaCorrenteComLimite::ContaCorrenteComLimite(int numDaConta, Pessoa &nomeCorrentista, double saldo, double limite ) : Conta(numDaConta, nomeCorrentista, saldo){
   this->limite = limite;
 }
 
